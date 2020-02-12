@@ -1,6 +1,6 @@
 <template>
     <!-- <h1>{{ quiz.title }}</h1> -->
-    <div id="app" v-cloak>
+<div id="app" v-cloak>
 
   <div class="row">
     <div class="large-12 columns">
