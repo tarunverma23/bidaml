@@ -1,15 +1,15 @@
 <template>
   <div>
-    <app-tabs> </app-tabs>
+    <app-tabs></app-tabs>
     <router-view></router-view>
     <navigation></navigation>
     <!-- <router-link to="/Home"> Home</router-link>
     <router-link to="/Contact"> Contact</router-link>
     <hr> -->
-    
+
     <!-- <app-form> </app-form> -->
-    <brainstorming_form> </brainstorming_form>
-    
+    <brainstorming_form @generateGraph="generateFromForm"></brainstorming_form>
+
 
     <graphViz id="xb-arg-map"
               class="b-arg-map"
@@ -19,6 +19,7 @@
               :savedDiagram="savedDiagram"
               @save="save"
               :width="width" :height="height"
+              ref="graph"
     ></graphViz>
     <save-modal :display="saveDisplay"
                 :svgData="svgData"
@@ -33,7 +34,7 @@
   import graphViz from './graphViz.vue';
   import saveModal from './components/saveModal.vue';
   import brainstorming_form from './components/brainstorming_form';
-  
+  import uuid from 'uuid/v4';
 
   export default {
     props: ['snippets', 'w', 'graphChunk', 'chunk'],
@@ -50,14 +51,14 @@
         saveDisplay: false,
         svgData: undefined,
         graphData: undefined,
-       
+
       };
     },
     watch: {
       w() {
         this.$log.info('graph - width changed', this.w);
         this.width = this.w;
-      }
+      },
     },
     created() {
       this.$log.info('graph - created', this.w, this);
@@ -71,13 +72,56 @@
     },
     methods: {
 
+      generateFromForm(payload) {
+        const nodes = payload.map((text) => {
+          const id = `note-${uuid()}`;
+          return {
+            id,
+            nodeShape: 'rect',
+            text,
+            hash: id,
+          };
+        });
+
+        const edges = nodes
+          .slice(1)
+          .reduce((acc, cur, idx) => {
+            const edge = {
+              subject: nodes[idx],
+              predicate: {
+                type: 'arrow',
+                text: '',
+                hash: `edge-${uuid()}`,
+                subject: nodes[idx].id,
+                object: nodes[idx + 1].id,
+                class: '',
+                arrowhead: 'R',
+                stroke: '#000000',
+                strokeWidth: 2,
+                strokeDasharray: 0,
+              },
+              object: nodes[idx + 1],
+            };
+            return acc.concat(edge);
+          }, []);
+
+        this.$refs.graph.rootObservable.next(
+          {
+            type: 'CREATE',
+            newNode: nodes,
+            triplet: edges,
+          },
+        );
+      },
+
       parse() {
         let saved = null;
         let textNodes = [];
         let graph = this.graphChunk && this.graphChunk.content;
 
-        if (graph && this.graphChunk.deleted) graph = null;
-        else if (graph && !graph.deleted && graph.length > 0) {
+        if (graph && this.graphChunk.deleted) {
+          graph = null;
+        } else if (graph && !graph.deleted && graph.length > 0) {
           try {
             graph = JSON.parse(graph);
             saved = graph.saved;
@@ -99,13 +143,13 @@
         let graph = JSON.stringify({
           saved: savedDiagram,
           svg: svg.outerHTML,
-          textNodes: textNodes
+          textNodes: textNodes,
         });
         let payload = {
           graphChunk: this.graphChunk,
           chunk: this.chunk,
           id: this.chunkId,
-          graph: graph
+          graph: graph,
         };
         this.$log.info('graph - saved', payload, JSON.parse(savedDiagram));
         this.$emit('save', payload);
@@ -124,7 +168,7 @@
         this.graphData = undefined;
       },
     },
-    components: { graphViz, saveModal, brainstorming_form }
+    components: { graphViz, saveModal, brainstorming_form },
   };
 
 </script>

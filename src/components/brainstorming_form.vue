@@ -44,6 +44,9 @@
 
           <!-- Last page, quiz is finished, display result -->
           <div v-show="questionIndex === quiz.questions.length">
+            <button class="btn brand-btn1" v-on:click="generate">
+              Generate
+            </button>
             <h3>The Result</h3>
             <p>
               Here it is: {{ score() }}
@@ -125,11 +128,15 @@
         quiz: quiz,
         questionIndex: 0,
         userResponses: Array(),
+        sampleQuestionData: ['cat', 'mouse', 'cheese'],
       };
 
     },
 
     methods: {
+      generate() {
+        this.$emit('generateGraph', this.sampleQuestionData);
+      },
       // Go to next question
       next: function () {
         this.questionIndex++;
