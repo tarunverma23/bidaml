@@ -16,10 +16,34 @@
         </p>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad">
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad">
-                  <button id="generate_button" class="btn brand-btn1">Generate</button>
+                  <button id="generate_button" class="btn brand-btn1">Recommender</button>
                 </div>
         </div>
-        
+
+
+      <!-- ---testing----------testing---------testing -------------testing---------------------------- -->
+       
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- ----------testing------testing---------testing -------------testing----------------->
+
+
+
+
+
+
      <!-------------------------------- Modal starts ---------------------------------->
       <div class="modal fade" id="generate_modal" role="dialog">
         <div class="modal-dialog">
@@ -190,6 +214,36 @@
 </template>
 
 <script>
+export default {
+
+  
+}
+
+
+      // <!-- ----------testing----------testing---------testing -------------testing------------------ -->
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // <!-- ----------testing----------testing---------testing -------------testing--------------- -->
+
 
         // modal click event starts here
         $(document).on('click', '#generate_button', function(){

@@ -22,11 +22,39 @@
                      @exitHover="closeEdgeHoverMenu($event)"
                      @clickedButton="hoverEdgeInteract($event)">
     </hover-menu-edge>
-    <toolBar @clickedAction="changeMouseState($event)"
+
+
+    <!-- <div v-show="display1">
+      <h1>Hello</h1>
+    </div> -->
+
+
+    <toolBar v-show="display1" @clickedAction="changeMouseState($event)"
              @changeDefaultShape="changeDefaultShape($event)"
              @mouseEnter="closeHoverMenu()"
              :shape="defaultShape"
              :mouse="mouseState"/>
+
+    <toolBarprocess v-show="display2" @clickedAction="changeMouseState($event)"
+             @changeDefaultShape="changeDefaultShape($event)"
+             @mouseEnter="closeHoverMenu()"
+             :shape="defaultShape"
+             :mouse="mouseState"/>
+
+    <toolBartechnique v-show="display3" @clickedAction="changeMouseState($event)"
+             @changeDefaultShape="changeDefaultShape($event)"
+             @mouseEnter="closeHoverMenu()"
+             :shape="defaultShape"
+             :mouse="mouseState"/>
+
+    <toolBardata v-show="display4" @clickedAction="changeMouseState($event)"
+             @changeDefaultShape="changeDefaultShape($event)"
+             @mouseEnter="closeHoverMenu()"
+             :shape="defaultShape"
+             :mouse="mouseState"/>
+
+
+
     <color-picker v-show="ifColorPickerOpen"
                   :style="styleObject"
                   :value="colors"
@@ -45,6 +73,18 @@
 
 <script>
 
+// var currentUrl = window.location.pathname;
+// alert(currentUrl);
+// myfunction();
+// function myfunction(){
+//   var currentUrl = window.location.pathname;
+//   if (currentUrl=="/Data")
+//   {
+//     testing=true;
+//     alert(testing);
+//   }
+
+// }
   /**
    Event emitters:
    - mouseovernode, nodeId - String
@@ -74,8 +114,11 @@
   import HighlightSelection from './behaviours/selection';
   import form from './components/form';
   import tabs from './components/tabs';
+  import toolBarprocess from './components/toolBarprocess';
+  import toolBartechnique from './components/toolBartechnique';
+  import toolBardata from './components/toolBardata';
 
-
+  
   const ADDNOTE = 'ADDNOTE';
   const BOLD = 'BOLD';
   const CLEARHISTORY = 'CLEARHISTORY';
@@ -130,6 +173,59 @@
           return [];
         }
       },
+
+      display1: {
+        type: Boolean,
+        default: function () {
+          var currentUrl = window.location.pathname;
+         if (currentUrl=="/form"){
+            return true;
+         }
+        else{
+        return false;
+         }
+        }
+      },
+
+      display2: {
+        type: Boolean,
+        default: function () {
+          var currentUrl = window.location.pathname;
+         if (currentUrl=="/Process"){
+            return true;
+         }
+        else{
+        return false;
+         }
+        }
+      },
+
+      display3: {
+        type: Boolean,
+        default: function () {
+          var currentUrl = window.location.pathname;
+         if (currentUrl=="/Technique"){
+            return true;
+         }
+        else{
+        return false;
+         }
+        }
+      },
+
+      display4: {
+        type: Boolean,
+        default: function () {
+          var currentUrl = window.location.pathname;
+         if (currentUrl=="/Data"){
+            return true;
+         }
+        else{
+        return false;
+         }
+        }
+      },
+
       highlightedNodeId: null,
       savedDiagram: null,
       width: Number,
@@ -146,12 +242,16 @@
     name: 'graph-viz',
     components: {
       toolBar,
+      toolBarprocess,
+      toolBartechnique,
+      toolBardata,
       'color-picker': Compact,
       hoverMenuNode,
       hoverMenuEdge
     },
     data() {
       return {
+        //display1: false,
         ifColorPickerOpen: false,
         coloredNodeId: undefined,
         updateValue: null,
@@ -349,6 +449,8 @@
           return base64;
         }
 
+        
+
         let img = document.querySelector('[src = "' + current.imgSrc + '"]');
         if (!img) return;
         let base64 = imageToBase64(img);
@@ -459,6 +561,22 @@
         this.responseLoadingMask = this.$loading(options);
         return await this.$nextTick();
       },
+
+      //  check: function()
+      // {
+      //   var currentUrl = window.location.pathname;
+        
+      //   if (currentUrl=="/Data"){
+      //     // return true;
+      //     this.test = true;
+          
+      //   }
+      //   else{
+      //      this.test = false;
+      //   }
+      //   //return true;
+      // },
+      
 
       hideLoadingMask() {
         let me = this;
@@ -1074,7 +1192,7 @@
 
         const g = svgSel.select('g.svg-graph')
           .append('g')
-          .attr('transform', `translate(0,0),scale(${scale})`);
+           .attr('transform', `translate(0,0),scale(${scale})`);
 
         //get nodes to be changed
         let nodes = [];
@@ -1254,6 +1372,14 @@
               case 'circle': {  return '#FFECA8'}
               case 'capsule': { return '#FFFFFF'} 
               case 'green_circle': { return '#A3D977'}
+              case 'red_circle': { return '#ff0000'}
+              case 'alert': { return '#f39f4d'}
+              case 'diamond': { return 'white'}
+              case 'tick': { return '#41AD49'}
+              case 'technique': { return '#c7e8ac'}
+              case 'report': { return '#157EFB'}
+              case 'code_file': { return 'black'}
+              case 'information': { return '#a8a8a8'}
               default : { return '#fcfcfc'}
             }
           },
@@ -1286,11 +1412,39 @@
               
               }
               case 'green_circle': {  //green_circle
-              return 'M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z';
+              return 'M20 9.57a20 20 0 1 0 40 0 20 20 0 1 0-40 0';
               
               }
               case 'diamond': {  //diamond
-              return 'm142.660156 434.253906c1.484375 2.222656 3.976563 3.554688 6.648438 3.554688s5.164062-1.332032 6.648437-3.554688l140.914063-210.90625c1.796875-2.691406 1.796875-6.199218 0-8.886718l-140.910156-210.90625c-1.484376-2.222657-3.976563-3.554688-6.648438-3.554688s-5.164062 1.332031-6.648438 3.554688l-140.914062 210.90625c-1.796875 2.6875-1.796875 6.195312 0 8.886718zm6.652344-411.851562 131.28125 196.5-131.28125 196.507812-131.285156-196.507812zm0 0';
+              return 'm54.456 70.091c.28.42 .751.671 1.255.671s.975-.251 1.255-.671l26.597-39.807c.339-.508.339-1.17 0-1.677l-26.596-39.807c-.28-.42-.751-.671-1.255-.671s-.975.251-1.255.671l-26.597 39.807c-.339.507-.339 1.169 0 1.677zm1.256-77.734 24.779 37.088-24.779 37.09-24.779-37.09zm0 0';
+              
+              }
+              case 'red_circle': {  //
+              return 'm110.57 28.565-19.52 0 0-7.903 19.52 0a31.611 31.611 0 0 0-27.422-27.422l0 19.52-7.903 0 0-19.52a31.611 31.611 0 0 0-27.422 27.422l19.52 0 0 7.903-19.52 0a31.611 31.611 0 0 0 27.422 27.422l0-19.52 7.903 0 0 19.52a31.611 31.611 0 0 0 27.422-27.422zm-31.374 35.562a39.514 39.514 0 1 1 0-79.027 39.514 39.514 0 0 1 0 79.027z';
+              
+              }
+              case 'alert': {  //
+              return 'm155.305 60.373-49.605-83.915c-.696-1.2-1.993-2.089-3.385-2.089-1.417 0-2.713.888-3.385 2.089l-49.605 83.915c-.672 1.201-1.152 3.121-.456 4.298.696 1.176 1.969 1.897 3.361 1.897l100.146 0c1.393 0 2.665-.72 3.361-1.897.72-1.176.24-3.121-.432-4.298zm-45.307-5.33-15.366 0 0-11.525 15.366 0 0 11.525zm0-19.208-15.366 0 0-34.574 15.366 0 0 34.574z';
+              
+              }
+              case 'tick': {  //tick
+              return 'M355.602 68.608c0-66.515-53.908-120.422-120.422-120.422S114.758 2.094 114.758 68.608s53.908 120.422 120.422 120.422S355.602 135.123 355.602 68.608L355.602 68.608zM327.237 21.71l-113.366 113.366 0 0-8.091 8.091L143.123 80.51l27.66-27.66 35.045 35.045 93.798-93.798L327.237 21.71 327.237 21.71z';
+              
+              }
+              case 'technique': {  //technique
+              return 'M 150 260 L 225 130 L 375 130 L 450 260 L 375 390 L 225 390 Z';
+              
+              }
+              case 'report': {  //report
+              return 'M135.948-29.412 135.948-38.504C135.948-48.479 144.092-56.628 154.137-56.628L163.12-56.628C173.199-56.628 181.308-48.513 181.308-38.504L181.308-29.412 199.492-29.412C204.488-29.412 208.524-25.355 208.524-20.349L208.524-11.259C208.524-6.212 204.481-2.196 199.492-2.196L117.765-2.196C112.768-2.196 108.732-6.254 108.732-11.259L108.732-20.349C108.732-25.397 112.776-29.412 117.765-29.412L135.948-29.412 135.948-29.412ZM126.876-38.484 117.829-38.484C107.809-38.484 99.684-30.399 99.66-20.34L90.565-20.34C80.557-20.34 72.444-12.269 72.444-2.164L72.444 188.283C72.444 198.322 80.526 206.46 90.565 206.46L226.692 206.46C236.7 206.46 244.812 198.388 244.812 188.283L244.812-2.164C244.812-12.203 236.73-20.34 226.692-20.34L217.596-20.34 217.596-20.34C217.573-30.365 209.476-38.484 199.427-38.484L190.38-38.484C190.372-53.517 178.131-65.7 163.08-65.7L154.176-65.7C139.104-65.7 126.884-53.561 126.876-38.484L126.876-38.484 126.876-38.484ZM217.596-11.268 226.668-11.268C231.615-11.268 235.74-7.194 235.74-2.168L235.74 188.287C235.74 193.406 231.678 197.388 226.668 197.388L90.588 197.388C85.642 197.388 81.516 193.313 81.516 188.287L81.516-2.168C81.516-7.287 85.578-11.268 90.588-11.268L99.66-11.268C99.684-1.244 107.781 6.876 117.829 6.876L199.427 6.876C209.447 6.876 217.573-1.21 217.596-11.268L217.596-11.268 217.596-11.268ZM158.628-29.412C161.133-29.412 163.164-31.443 163.164-33.948 163.164-36.453 161.133-38.484 158.628-38.484 156.123-38.484 154.092-36.453 154.092-33.948 154.092-31.443 156.123-29.412 158.628-29.412L158.628-29.412Z';
+              
+              }
+              case 'code_file': {  // code_file
+              return 'M182.255-3.81q2.305 2.305 3.951 6.256t1.646 7.244v94.833q0 3.293-2.305 5.598t-5.598 2.305h-110.638q-3.293 0-5.598-2.305t-2.305-5.598v-131.712q0-3.293 2.305-5.598t5.598-2.305h73.759q3.293 0 7.244 1.646t6.256 3.951zm-36.55-20.086v30.952h30.952q-.823-2.387-1.811-3.375l-25.766-25.766q-.988-.988-3.375-1.811zm31.611 125.785v-84.296h-34.245q-3.293 0-5.598-2.305t-2.305-5.598v-34.245h-63.222v126.444h105.37z';
+              
+              }
+              case 'information': {  // information
+              return 'M89.64 43.98h170.1v87.075H89.64z';
               
               }
               default : {

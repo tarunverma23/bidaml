@@ -66,7 +66,7 @@
 
   export default {
     props: ['mouse', 'shape'],
-    name: 'toolBar',
+    name: 'toolBarprocess',
     data() {
       return {
         tools: [
@@ -178,31 +178,42 @@
             icon: `.${fa5Icons}#circle-ellipse`,
             tip: 'Circle',
           },
-          {
-            shape: 'file',
-            icon: `.${fa5Icons}#file`,
-            tip: 'file',
-          },
-          {
-            shape: 'rect',
-            icon: `.${fa5Icons}#rect-hexagon`,
-            tip: 'Rectangle',
-          },
-          {
-            shape: 'capsule',
-            icon: `.${fa5Icons}#capsule-comment`,
-            tip: 'Rounded Rectangle',
-          }
           // {
-          //   shape: 'green_circle',
-          //   icon: `.${fa5Icons}#green_circle`,
-          //   tip: 'green_circle',
+          //   shape: 'file',
+          //   icon: `.${fa5Icons}#file`,
+          //   tip: 'file',
           // },
           // {
-          //   shape: 'diamond',
-          //   icon: `.${fa5Icons}#diamond`,
-          //   tip: 'diamond',
+          //   shape: 'rect',
+          //   icon: `.${fa5Icons}#rect-hexagon`,
+          //   tip: 'Rectangle',
           // },
+          // {
+          //   shape: 'capsule',
+          //   icon: `.${fa5Icons}#capsule-comment`,
+          //   tip: 'Rounded Rectangle',
+          // },
+          {
+            shape: 'green_circle',
+            icon: `.${fa5Icons}#green_circle`,
+            tip: 'green_circle',
+          },
+          {
+            shape: 'diamond',
+            icon: `.${fa5Icons}#diamond`,
+            tip: 'diamond',
+          },
+          {
+            shape: 'red_circle',
+            icon: `.${fa5Icons}#red_circle`,
+            tip: 'red_circle',
+          },
+          {
+            shape: 'alert',
+            icon: `.${fa5Icons}#alert`,
+            tip: 'alert',
+          },
+
         ],
         showShapeMenu: false,
         shapeToolVisibility: 'visible',

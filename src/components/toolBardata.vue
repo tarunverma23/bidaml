@@ -66,7 +66,7 @@
 
   export default {
     props: ['mouse', 'shape'],
-    name: 'toolBar',
+    name: 'toolBardata',
     data() {
       return {
         tools: [
@@ -178,31 +178,33 @@
             icon: `.${fa5Icons}#circle-ellipse`,
             tip: 'Circle',
           },
+        //   {
+        //     shape: 'data',
+        //     icon: `.${fa5Icons}#data`,
+        //     tip: 'data',
+        //   },
           {
-            shape: 'file',
-            icon: `.${fa5Icons}#file`,
-            tip: 'file',
+            shape: 'code_file',
+            icon: `.${fa5Icons}#code_file`,
+            tip: 'code_file',
+          },
+        //   {
+        //     shape: 'multi_data',
+        //     icon: `.${fa5Icons}#multi_data`,
+        //     tip: 'multi_data',
+        //   },
+          {
+            shape: 'report',
+            icon: `.${fa5Icons}#report`,
+            tip: 'report',
           },
           {
-            shape: 'rect',
-            icon: `.${fa5Icons}#rect-hexagon`,
-            tip: 'Rectangle',
+            shape: 'information',
+            icon: `.${fa5Icons}#information`,
+            tip: 'information',
           },
-          {
-            shape: 'capsule',
-            icon: `.${fa5Icons}#capsule-comment`,
-            tip: 'Rounded Rectangle',
-          }
-          // {
-          //   shape: 'green_circle',
-          //   icon: `.${fa5Icons}#green_circle`,
-          //   tip: 'green_circle',
-          // },
-          // {
-          //   shape: 'diamond',
-          //   icon: `.${fa5Icons}#diamond`,
-          //   tip: 'diamond',
-          // },
+          
+          
         ],
         showShapeMenu: false,
         shapeToolVisibility: 'visible',

@@ -1,6 +1,16 @@
 <template>
   <div>
-    <app-form> </app-form>
+    <app-tabs> </app-tabs>
+    <router-view></router-view>
+    <navigation></navigation>
+    <!-- <router-link to="/Home"> Home</router-link>
+    <router-link to="/Contact"> Contact</router-link>
+    <hr> -->
+    
+    <!-- <app-form> </app-form> -->
+    <brainstorming_form> </brainstorming_form>
+    
+
     <graphViz id="xb-arg-map"
               class="b-arg-map"
               :hypothesisId="chunkId"
@@ -19,8 +29,11 @@
   </div>
 </template>
 <script>
+
   import graphViz from './graphViz.vue';
   import saveModal from './components/saveModal.vue';
+  import brainstorming_form from './components/brainstorming_form';
+  
 
   export default {
     props: ['snippets', 'w', 'graphChunk', 'chunk'],
@@ -37,6 +50,7 @@
         saveDisplay: false,
         svgData: undefined,
         graphData: undefined,
+       
       };
     },
     watch: {
@@ -110,7 +124,7 @@
         this.graphData = undefined;
       },
     },
-    components: { graphViz, saveModal }
+    components: { graphViz, saveModal, brainstorming_form }
   };
 
 </script>
@@ -142,10 +156,11 @@
 <style scoped>
   .b-arg-map {
     left: 0;
-    top: 300px;
+    top: 330px;
     position: absolute;
     width: 100%;
     height: 100%;
+    border-top: 1px solid #E5E5E5;
   }
 
 

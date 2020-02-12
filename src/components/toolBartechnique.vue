@@ -66,7 +66,7 @@
 
   export default {
     props: ['mouse', 'shape'],
-    name: 'toolBar',
+    name: 'toolBartechnique',
     data() {
       return {
         tools: [
@@ -179,30 +179,21 @@
             tip: 'Circle',
           },
           {
-            shape: 'file',
-            icon: `.${fa5Icons}#file`,
-            tip: 'file',
+            shape: 'alert',
+            icon: `.${fa5Icons}#alert`,
+            tip: 'alert',
           },
           {
-            shape: 'rect',
-            icon: `.${fa5Icons}#rect-hexagon`,
-            tip: 'Rectangle',
+            shape: 'tick',
+            icon: `.${fa5Icons}#tick`,
+            tip: 'tick',
           },
           {
-            shape: 'capsule',
-            icon: `.${fa5Icons}#capsule-comment`,
-            tip: 'Rounded Rectangle',
-          }
-          // {
-          //   shape: 'green_circle',
-          //   icon: `.${fa5Icons}#green_circle`,
-          //   tip: 'green_circle',
-          // },
-          // {
-          //   shape: 'diamond',
-          //   icon: `.${fa5Icons}#diamond`,
-          //   tip: 'diamond',
-          // },
+            shape: 'technique',
+            icon: `.${fa5Icons}#technique`,
+            tip: 'technique',
+          },
+          
         ],
         showShapeMenu: false,
         shapeToolVisibility: 'visible',

@@ -1,27 +1,53 @@
 <template>
-       <!-- <div class="container">
-
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#tab1">Tab 1</a></li>
-        <li><a data-toggle="tab" href="#tab2">Tab 2</a></li>
-        <li><a data-toggle="tab" href="#tab3">Tab 3</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div id="tab1" class="tab-pane fade in active">
-          <h3>Tab 1</h3>
-          <p>Content for tab 1.</p>
-        </div>
-        <div id="tab2" class="tab-pane fade">
-          <h3>Tab 2</h3>
-          <p>Content for tab 2.</p>
-        </div>
-        <div id="tab3" class="tab-pane fade">
-          <h3>Tab 3</h3>
-          <p>Content for tab 3.</p>
-        </div>
-      </div>
-
-    </div> -->
-    <h1>hello</h1>
+  <div>
+    <nav class="navbar">
+      <router-link v-for="routes in links" v-bind:key="routes.id" 
+      :to="`${routes.page}`" class="navbar_links a-deco"> {{routes.text}} </router-link>
+    </nav>
+  </div>
 </template>
+
+<script>
+
+export default {
+  name: 'Navigation',
+  data() {
+    return {
+      links: [
+        {
+          id: 1,
+          text: 'Brainstorming',
+          page:'/form'
+        },
+        {
+          id: 2,
+          text: 'Process',
+          page:'/Process'
+        },
+        {
+          id: 3,
+          text: 'Data',
+          page:'/Data'
+        },
+        {
+          id: 4,
+          text: 'Technique',
+          page:'/Technique'
+        },
+        {
+          id: 5,
+          text: 'Deployment',
+          page:'/Deployment'
+        }
+      ]
+    }
+  }
+}
+</script>
+
+<style  scoped>
+.navbar_links {color: black;font-size: 20px;margin:10px;}
+.navbar_links:hover{color: white;border-bottom:5px solid #FFCC65;}
+.navbar {width: 100%; background-color: #d9d9d9
+;margin:0!important;min-height: auto;padding: 10px}
+</style>
