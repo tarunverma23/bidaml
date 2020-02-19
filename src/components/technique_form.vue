@@ -1,11 +1,6 @@
 <template>
-<<<<<<< HEAD
-    <!-- <h1>{{ quiz.title }}</h1> -->
-<div id="app" v-cloak>
-=======
   <!-- <h1>{{ quiz.title }}</h1> -->
   <div id="app" v-cloak>
->>>>>>> yusufades/master
 
     <div class="row">
       <div class="large-12 columns">
@@ -70,7 +65,7 @@
     title: 'heading',
     questions: [{
       id: 1,
-      text: 'Business Requirement Analysis',
+      text: 'Business Requirement Analysis for technique diagram',
       responses: [{
         id: 1,
         text: 'Enter the problem',

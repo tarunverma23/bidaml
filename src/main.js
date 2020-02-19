@@ -5,7 +5,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import form from './components/form.vue'
 import tabs from './components/tabs.vue'
- import brainstorming_form from './components/brainstorming_form.vue'
+import brainstorming_form from './components/brainstorming_form.vue'
 
 import css from './components/common.css'
 //  import bootstrap from './components/bootstrap/css/bootstrap.min.css'
