@@ -8,9 +8,9 @@
     <hr> -->
 
     <!-- <app-form> </app-form> -->
-    <brainstorming_form @generateGraph="generateFromForm"></brainstorming_form>
-
-
+    <brainstorming_form v-show="display_questions1()" @generateGraph="generateFromForm"></brainstorming_form>
+    <technique_form v-show="display_questions2()" @generateGraph="generateFromForm"></technique_form>
+    
     <graphViz id="xb-arg-map"
               class="b-arg-map"
               :hypothesisId="chunkId"
@@ -34,10 +34,16 @@
   import graphViz from './graphViz.vue';
   import saveModal from './components/saveModal.vue';
   import brainstorming_form from './components/brainstorming_form';
+  import technique_form from './components/technique_form';
   import uuid from 'uuid/v4';
+//import technique_formVue from './components/technique_form.vue';
 
   export default {
+    
     props: ['snippets', 'w', 'graphChunk', 'chunk'],
+
+   
+  
     data() {
       return {
         chunkId: null,
@@ -51,21 +57,28 @@
         saveDisplay: false,
         svgData: undefined,
         graphData: undefined,
-
+        display_questions: true,
+       
       };
+      
     },
+      
     watch: {
       w() {
         this.$log.info('graph - width changed', this.w);
         this.width = this.w;
       },
+
+      
     },
     created() {
       this.$log.info('graph - created', this.w, this);
       this.chunkId = this.chunk ? this.chunk.id : undefined;
       this.parse();
+      
     },
     mounted() {
+      
       this.height = document.getElementById('xb-arg-map').clientHeight;
       this.width = document.getElementById('xb-arg-map').clientWidth;
       this.$log.info('graph - height changed', this.height);
@@ -75,13 +88,26 @@
       generateFromForm(payload) {
         const nodes = payload.map((text) => {
           const id = `note-${uuid()}`;
-          return {
+          //alert(text);
+
+          if (text == "New1") {
+            return {
             id,
             nodeShape: 'rect',
             text,
             hash: id,
           };
+          }
+          else {
+            return {
+            id,
+            nodeShape: 'circle_orange',
+            text,
+            hash: id,
+          };
+          }
         });
+        
 
         const edges = nodes
           .slice(1)
@@ -95,7 +121,7 @@
                 subject: nodes[idx].id,
                 object: nodes[idx + 1].id,
                 class: '',
-                arrowhead: 'R',
+                arrowhead: 'N',
                 stroke: '#000000',
                 strokeWidth: 2,
                 strokeDasharray: 0,
@@ -112,6 +138,28 @@
             triplet: edges,
           },
         );
+      },
+
+       display_questions1() {
+        var currentUrl = window.location.pathname;
+         if (currentUrl=="/form"){
+          return true;
+         }
+        else{
+        return false;
+         }
+        
+      },
+
+      display_questions2() {
+        var currentUrl = window.location.pathname;
+         if (currentUrl=="/Technique"){
+          return true;
+         }
+        else{
+        return false;
+         }
+        
       },
 
       parse() {
@@ -167,8 +215,9 @@
         this.svgData = undefined;
         this.graphData = undefined;
       },
+
     },
-    components: { graphViz, saveModal, brainstorming_form },
+    components: { graphViz, saveModal, brainstorming_form, technique_form },
   };
 
 </script>
@@ -201,6 +250,7 @@
   .b-arg-map {
     left: 0;
     top: 330px;
+    /* top: 430px; */
     position: absolute;
     width: 100%;
     height: 100%;
