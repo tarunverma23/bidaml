@@ -30,11 +30,9 @@ jobs:
    steps:
        - uses: actions/checkout@v1
        - name: Bulid docker image
-         env:
-           IMAGE_TAG: ${{ github.sha }}
          
          run: |
-           docker build -t "$GITHUB_REPOSITORY:$IMAGE_TAG" .
+           docker build .
 
 
 
