@@ -24,16 +24,7 @@ jobs:
         CI: true
         working-directory: app
 
-  build:
-   needs: test
-   runs-on: [ubuntu-latest]
-    
-   steps:
-       - uses: actions/checkout@v2
-       - name: Build the Docker image
-       - run: npm install
-       - run: npm audit fix
-       - run: npm run build --if-present
+ 
 
 
 
