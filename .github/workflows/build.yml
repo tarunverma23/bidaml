@@ -25,6 +25,7 @@ jobs:
         working-directory: app
 
   build:
+   needs: test
    runs-on: [ubuntu-latest]
     
    steps:
