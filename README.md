@@ -1,4 +1,4 @@
-<a href="https://github.com/tarunverma23/<bidaml/workflows/Build/badge.svg">
+![Build](https://github.com/tarunverma23/bidaml/workflows/Build/badge.svg)
 # bidaml
 Vue and node project to build a tool for making diagrams
 
