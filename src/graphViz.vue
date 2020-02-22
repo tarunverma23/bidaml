@@ -72,19 +72,6 @@
 </template>
 
 <script>
-
-// var currentUrl = window.location.pathname;
-// alert(currentUrl);
-// myfunction();
-// function myfunction(){
-//   var currentUrl = window.location.pathname;
-//   if (currentUrl=="/Data")
-//   {
-//     testing=true;
-//     alert(testing);
-//   }
-
-// }
   /**
    Event emitters:
    - mouseovernode, nodeId - String
@@ -562,20 +549,6 @@
         return await this.$nextTick();
       },
 
-      //  check: function()
-      // {
-      //   var currentUrl = window.location.pathname;
-        
-      //   if (currentUrl=="/Data"){
-      //     // return true;
-      //     this.test = true;
-          
-      //   }
-      //   else{
-      //      this.test = false;
-      //   }
-      //   //return true;
-      // },
       
 
       hideLoadingMask() {
@@ -617,6 +590,9 @@
           });
         }
       },
+
+
+      
 
       updateFromPicker(value) {
         const svg = this.graph.getSVGElement().node();
@@ -1050,6 +1026,8 @@
                   children: {nodes: [nodeIDs]} | [{nodes: [nodeIDs]}], }
                *
                */
+
+              
               case GROUP: {
                 /**
                  * Helper function to create group object

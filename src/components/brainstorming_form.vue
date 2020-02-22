@@ -1,11 +1,6 @@
 <template>
-<<<<<<< HEAD
-    <!-- <h1>{{ quiz.title }}</h1> -->
-<div id="app" v-cloak>
-=======
   <!-- <h1>{{ quiz.title }}</h1> -->
   <div id="app" v-cloak>
->>>>>>> yusufades/master
 
     <div class="row">
       <div class="large-12 columns">

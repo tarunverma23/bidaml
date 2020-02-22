@@ -42,8 +42,6 @@
     
     props: ['snippets', 'w', 'graphChunk', 'chunk'],
 
-   
-  
     data() {
       return {
         chunkId: null,
