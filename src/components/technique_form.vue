@@ -65,7 +65,7 @@
     title: 'heading',
     questions: [{
       id: 1,
-      text: 'Business Requirement Analysis',
+      text: 'Business Requirement Analysis for technique diagram',
       responses: [{
         id: 1,
         text: 'Enter the problem',

@@ -16,14 +16,14 @@
         </p>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad">
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad">
-                  <button id="generate_button" class="btn brand-btn1">Recommender</button>
+                  <button id="generate_button" class="btn brand-btn1">Generate</button>
                 </div>
         </div>
 
 
       <!-- ---testing----------testing---------testing -------------testing---------------------------- -->
        
-    
+  
 
 
 
