@@ -72,19 +72,6 @@
 </template>
 
 <script>
-
-// var currentUrl = window.location.pathname;
-// alert(currentUrl);
-// myfunction();
-// function myfunction(){
-//   var currentUrl = window.location.pathname;
-//   if (currentUrl=="/Data")
-//   {
-//     testing=true;
-//     alert(testing);
-//   }
-
-// }
   /**
    Event emitters:
    - mouseovernode, nodeId - String
@@ -562,20 +549,6 @@
         return await this.$nextTick();
       },
 
-      //  check: function()
-      // {
-      //   var currentUrl = window.location.pathname;
-        
-      //   if (currentUrl=="/Data"){
-      //     // return true;
-      //     this.test = true;
-          
-      //   }
-      //   else{
-      //      this.test = false;
-      //   }
-      //   //return true;
-      // },
       
 
       hideLoadingMask() {
@@ -617,6 +590,9 @@
           });
         }
       },
+
+
+      
 
       updateFromPicker(value) {
         const svg = this.graph.getSVGElement().node();
@@ -1050,6 +1026,8 @@
                   children: {nodes: [nodeIDs]} | [{nodes: [nodeIDs]}], }
                *
                */
+
+              
               case GROUP: {
                 /**
                  * Helper function to create group object
@@ -1370,6 +1348,7 @@
             switch (d.nodeShape) {
               case 'rect': { return '#C33039'}
               case 'circle': {  return '#FFECA8'}
+              case 'circle_orange': { return '#F18C21'}
               case 'capsule': { return '#FFFFFF'} 
               case 'green_circle': { return '#A3D977'}
               case 'red_circle': { return '#ff0000'}
@@ -1399,6 +1378,11 @@
                 return 'M 150 260 L 225 130 L 375 130 L 450 260 L 375 390 L 225 390 Z';
               }
               case 'circle': {  //now ellipse
+               return 'M20,40a20,20 0 1,0 40,0a20,20 0 1,0 -40,0';
+                //return 'M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0';
+              }
+
+              case 'circle_orange': {  //now ellipse
                return 'M20,40a20,20 0 1,0 40,0a20,20 0 1,0 -40,0';
                 //return 'M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0';
               }
