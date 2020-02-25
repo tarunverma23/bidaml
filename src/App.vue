@@ -1,16 +1,16 @@
 <template>
   <div>
-    <app-tabs> </app-tabs>
+    <app-tabs></app-tabs>
     <router-view></router-view>
     <navigation></navigation>
     <!-- <router-link to="/Home"> Home</router-link>
     <router-link to="/Contact"> Contact</router-link>
     <hr> -->
-    
-    <!-- <app-form> </app-form> -->
-    <brainstorming_form> </brainstorming_form>
-    
 
+    <!-- <app-form> </app-form> -->
+    <brainstorming_form v-show="display_questions1()" @generateGraph="generateFromForm"></brainstorming_form>
+    <technique_form v-show="display_questions2()" @generateGraph="generateFromForm"></technique_form>
+    
     <graphViz id="xb-arg-map"
               class="b-arg-map"
               :hypothesisId="chunkId"
@@ -19,6 +19,7 @@
               :savedDiagram="savedDiagram"
               @save="save"
               :width="width" :height="height"
+              ref="graph"
     ></graphViz>
     <save-modal :display="saveDisplay"
                 :svgData="svgData"
@@ -33,10 +34,14 @@
   import graphViz from './graphViz.vue';
   import saveModal from './components/saveModal.vue';
   import brainstorming_form from './components/brainstorming_form';
-  
+  import technique_form from './components/technique_form';
+  import uuid from 'uuid/v4';
+//import technique_formVue from './components/technique_form.vue';
 
   export default {
+    
     props: ['snippets', 'w', 'graphChunk', 'chunk'],
+
     data() {
       return {
         chunkId: null,
@@ -50,34 +55,119 @@
         saveDisplay: false,
         svgData: undefined,
         graphData: undefined,
+        display_questions: true,
        
       };
+      
     },
+      
     watch: {
       w() {
         this.$log.info('graph - width changed', this.w);
         this.width = this.w;
-      }
+      },
+
+      
     },
     created() {
       this.$log.info('graph - created', this.w, this);
       this.chunkId = this.chunk ? this.chunk.id : undefined;
       this.parse();
+      
     },
     mounted() {
+      
       this.height = document.getElementById('xb-arg-map').clientHeight;
       this.width = document.getElementById('xb-arg-map').clientWidth;
       this.$log.info('graph - height changed', this.height);
     },
     methods: {
 
+      generateFromForm(payload) {
+        const nodes = payload.map((text) => {
+          const id = `note-${uuid()}`;
+          //alert(text);
+
+          if (text == "New1") {
+            return {
+            id,
+            nodeShape: 'rect',
+            text,
+            hash: id,
+          };
+          }
+          else {
+            return {
+            id,
+            nodeShape: 'circle_orange',
+            text,
+            hash: id,
+          };
+          }
+        });
+        
+
+        const edges = nodes
+          .slice(1)
+          .reduce((acc, cur, idx) => {
+            const edge = {
+              subject: nodes[idx],
+              predicate: {
+                type: 'arrow',
+                text: '',
+                hash: `edge-${uuid()}`,
+                subject: nodes[idx].id,
+                object: nodes[idx + 1].id,
+                class: '',
+                arrowhead: 'N',
+                stroke: '#000000',
+                strokeWidth: 2,
+                strokeDasharray: 0,
+              },
+              object: nodes[idx + 1],
+            };
+            return acc.concat(edge);
+          }, []);
+
+        this.$refs.graph.rootObservable.next(
+          {
+            type: 'CREATE',
+            newNode: nodes,
+            triplet: edges,
+          },
+        );
+      },
+
+       display_questions1() {
+        var currentUrl = window.location.pathname;
+         if (currentUrl=="/form"){
+          return true;
+         }
+        else{
+        return false;
+         }
+        
+      },
+
+      display_questions2() {
+        var currentUrl = window.location.pathname;
+         if (currentUrl=="/Technique"){
+          return true;
+         }
+        else{
+        return false;
+         }
+        
+      },
+
       parse() {
         let saved = null;
         let textNodes = [];
         let graph = this.graphChunk && this.graphChunk.content;
 
-        if (graph && this.graphChunk.deleted) graph = null;
-        else if (graph && !graph.deleted && graph.length > 0) {
+        if (graph && this.graphChunk.deleted) {
+          graph = null;
+        } else if (graph && !graph.deleted && graph.length > 0) {
           try {
             graph = JSON.parse(graph);
             saved = graph.saved;
@@ -99,13 +189,13 @@
         let graph = JSON.stringify({
           saved: savedDiagram,
           svg: svg.outerHTML,
-          textNodes: textNodes
+          textNodes: textNodes,
         });
         let payload = {
           graphChunk: this.graphChunk,
           chunk: this.chunk,
           id: this.chunkId,
-          graph: graph
+          graph: graph,
         };
         this.$log.info('graph - saved', payload, JSON.parse(savedDiagram));
         this.$emit('save', payload);
@@ -123,8 +213,9 @@
         this.svgData = undefined;
         this.graphData = undefined;
       },
+
     },
-    components: { graphViz, saveModal, brainstorming_form }
+    components: { graphViz, saveModal, brainstorming_form, technique_form },
   };
 
 </script>
@@ -157,6 +248,7 @@
   .b-arg-map {
     left: 0;
     top: 330px;
+    /* top: 430px; */
     position: absolute;
     width: 100%;
     height: 100%;
