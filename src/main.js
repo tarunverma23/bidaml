@@ -5,10 +5,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import form from './components/form.vue'
 import tabs from './components/tabs.vue'
- import brainstorming_form from './components/brainstorming_form.vue'
+import brainstorming_form from './components/brainstorming_form.vue'
+
+import toolBartechnique from './components/toolBartechnique.vue'
+import toolBarprocess from './components/toolBarprocess.vue'
 
 import css from './components/common.css'
-//  import bootstrap from './components/bootstrap/css/bootstrap.min.css'
+
 import * as log from 'loglevel'
 
 Vue.component('app-form', form);

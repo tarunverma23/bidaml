@@ -1,6 +1,7 @@
 <template>
   <div id="graph-viz">
     <link v-once rel="stylesheet" href="./static/fonts/font-awesome/css/font-awesome.css"/>
+    
 
     <hover-menu-node :position="hoverPos"
                      :pad="10"
@@ -29,25 +30,25 @@
     </div> -->
 
 
-    <toolBar v-show="display1" @clickedAction="changeMouseState($event)"
+    <toolBar v-show="this.$route.path =='/form'" @clickedAction="changeMouseState($event)"
              @changeDefaultShape="changeDefaultShape($event)"
              @mouseEnter="closeHoverMenu()"
              :shape="defaultShape"
              :mouse="mouseState"/>
 
-    <toolBarprocess v-show="display2" @clickedAction="changeMouseState($event)"
+    <toolBarprocess v-show="this.$route.path =='/Process'" @clickedAction="changeMouseState($event)"
              @changeDefaultShape="changeDefaultShape($event)"
              @mouseEnter="closeHoverMenu()"
              :shape="defaultShape"
              :mouse="mouseState"/>
 
-    <toolBartechnique v-show="display3" @clickedAction="changeMouseState($event)"
+    <toolBartechnique v-show="this.$route.path =='/Technique'" @clickedAction="changeMouseState($event)"
              @changeDefaultShape="changeDefaultShape($event)"
              @mouseEnter="closeHoverMenu()"
              :shape="defaultShape"
              :mouse="mouseState"/>
 
-    <toolBardata v-show="display4" @clickedAction="changeMouseState($event)"
+    <toolBardata v-show="this.$route.path =='/Data'" @clickedAction="changeMouseState($event)"
              @changeDefaultShape="changeDefaultShape($event)"
              @mouseEnter="closeHoverMenu()"
              :shape="defaultShape"
@@ -165,7 +166,7 @@
         type: Boolean,
         default: function () {
           var currentUrl = window.location.pathname;
-         if (currentUrl=="/form"){
+         if (this.$route.path=="/form"){
             return true;
          }
         else{
@@ -178,7 +179,7 @@
         type: Boolean,
         default: function () {
           var currentUrl = window.location.pathname;
-         if (currentUrl=="/Process"){
+         if (this.$route.path=="/Process"){
             return true;
          }
         else{
@@ -283,6 +284,7 @@
         activeSelect: new HighlightSelection(),
         mouseStateObs$: undefined,
         defaultShape: 'rect',
+        page: '/home'
       };
     },
     mounted() {
@@ -411,6 +413,9 @@
       this.destroy$.unsubscribe();
     },
     watch: {
+      $route(current){
+        this.page = current.path
+      },
       imgDropGraph(current, old) {
         let me = this;
 

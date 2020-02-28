@@ -20,30 +20,6 @@
                 </div>
         </div>
 
-
-      <!-- ---testing----------testing---------testing -------------testing---------------------------- -->
-       
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- ----------testing------testing---------testing -------------testing----------------->
-
-
-
-
-
-
      <!-------------------------------- Modal starts ---------------------------------->
       <div class="modal fade" id="generate_modal" role="dialog">
         <div class="modal-dialog">

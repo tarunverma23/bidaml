@@ -2,12 +2,7 @@
   <div>
     <app-tabs></app-tabs>
     <router-view></router-view>
-    <navigation></navigation>
-    <!-- <router-link to="/Home"> Home</router-link>
-    <router-link to="/Contact"> Contact</router-link>
-    <hr> -->
-
-    <!-- <app-form> </app-form> -->
+  
     <brainstorming_form v-show="display_questions1()" @generateGraph="generateFromForm"></brainstorming_form>
     <technique_form v-show="display_questions2()" @generateGraph="generateFromForm"></technique_form>
     

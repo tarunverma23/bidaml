@@ -24,7 +24,7 @@
                       v-bind:value="response.value"
                       v-bind:name="index"
                       v-model="userResponses[index]"> {{response.text}} -->
-                    <input class="form-control" v-model="userResponses[index]"  type="text" id="" name="" v-bind:placeholder="response.text">
+                    <input class="form-control" v-model="userResponses[index]"  type="text" ref="inputBox" name="" v-bind:placeholder="response.text">
                   </label>
                 </li>
 
@@ -123,8 +123,14 @@
       
       // Go to next question
       next: function () {
-        this.questionIndex++;
+        // this.userResponses[index] = this.$refs.inputBox.value
         console.log(this.userResponses);
+        if (this.questionIndex===1 && this.userResponses[this.questionIndex] == 'test')
+        {
+          console.log("it works");
+        }
+                this.questionIndex++;
+
       },
       // Go to previous question
       prev: function () {

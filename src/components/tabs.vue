@@ -9,35 +9,49 @@
 
 <script>
 
+
 export default {
   name: 'Navigation',
   data() {
     return {
       links: [
-        {
+
+         {
           id: 1,
-          text: 'Brainstorming',
-          page:'/form'
+          text: 'home',
+          page:'/home',
+          // component: toolBar,
         },
         {
           id: 2,
-          text: 'Process',
-          page:'/Process'
+          text: 'Brainstorming',
+          page:'/form',
+          // component: toolBar,
+          
         },
         {
           id: 3,
-          text: 'Data',
-          page:'/Data'
+          text: 'Process',
+          page:'/Process',
+          // component: toolBarprocess,
         },
         {
           id: 4,
-          text: 'Technique',
-          page:'/Technique'
+          text: 'Data',
+          page:'/Data',
+          // component: toolBardata,
         },
         {
           id: 5,
+          text: 'Technique',
+          page:'/Technique',
+          // component: toolBartechnique,
+        },
+        {
+          id: 6,
           text: 'Deployment',
-          page:'/Deployment'
+          page:'/Deployment',
+          //  component: toolBardeployment,
         }
       ]
     }
