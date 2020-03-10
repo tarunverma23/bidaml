@@ -1,12 +1,17 @@
 <template>
   <div>
-    <app-tabs></app-tabs>
+    <app-tabs v-if="this.$route.path =='/form' || this.$route.path =='/Data' || this.$route.path =='/Process'
+    || this.$route.path =='/Technique' || this.$route.path =='/Deployment'">
+
+    </app-tabs>
     <router-view></router-view>
   
     <brainstorming_form v-show="display_questions1()" @generateGraph="generateFromForm"></brainstorming_form>
     <technique_form v-show="display_questions2()" @generateGraph="generateFromForm"></technique_form>
     
-    <graphViz id="xb-arg-map"
+    <graphViz v-if="this.$route.path =='/form' || this.$route.path =='/Data' || this.$route.path =='/Process'
+    || this.$route.path =='/Technique' || this.$route.path =='/Deployment'"
+              id="xb-arg-map"
               class="b-arg-map"
               :hypothesisId="chunkId"
               :nodes="nodes"

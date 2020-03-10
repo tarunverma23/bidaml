@@ -5,15 +5,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import form from './components/form.vue'
 import tabs from './components/tabs.vue'
+import Home from './components/Home.vue'
 import brainstorming_form from './components/brainstorming_form.vue'
-
 import toolBartechnique from './components/toolBartechnique.vue'
 import toolBarprocess from './components/toolBarprocess.vue'
 
 import css from './components/common.css'
 
 import * as log from 'loglevel'
-
 Vue.component('app-form', form);
 Vue.component('app-tabs', tabs);
 Vue.component('brainstorming_form', brainstorming_form);
@@ -32,6 +31,7 @@ import VueRouter from 'vue-router'
 
 
 const routes =  [
+  { path: '/', component: Home},
   { path: '/Process', component: Process},
   { path: '/Data', component: Data},
   { path: '/form', component: form},

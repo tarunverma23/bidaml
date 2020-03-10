@@ -18,8 +18,8 @@ export default {
 
          {
           id: 1,
-          text: 'home',
-          page:'/home',
+          text: 'Home',
+          page:'/',
           // component: toolBar,
         },
         {
