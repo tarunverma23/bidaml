@@ -1,6 +1,6 @@
 <template>
   <!-- <h1>{{ quiz.title }}</h1> -->
-  <div id="app" v-cloak>
+  <div id="" v-cloak>
 
     <div class="row">
       <div class="large-12 columns">
@@ -24,7 +24,7 @@
                       v-bind:value="response.value"
                       v-bind:name="index"
                       v-model="userResponses[index]"> {{response.text}} -->
-                    <input class="form-control" v-model="userResponses[index]"  type="text" ref="inputBox" name="" v-bind:placeholder="response.text">
+                    <input class="form-control form_textbox" v-model="userResponses[index]"  type="text" ref="inputBox" name="" v-bind:placeholder="response.text">
                   </label>
                 </li>
 
@@ -32,10 +32,10 @@
               <!-- The two navigation buttons -->
               <!-- Note: prev is hidden on first question -->
               <button class="btn brand-btn1" v-if="questionIndex > 0" v-on:click="prev">
-                prev
+                Previous
               </button>
               <button class="btn brand-btn1" v-on:click="next">
-                next
+                Next
               </button>
             </div>
           </div>
@@ -166,5 +166,8 @@
   .alignment {
     display: inline-flex;
     padding-left: 0;
+    margin-top:5px;
   }
+
+  .form_textbox{width: 400px}
 </style>

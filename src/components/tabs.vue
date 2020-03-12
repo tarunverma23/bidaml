@@ -3,12 +3,11 @@
     <nav class="navbar">
       <router-link v-for="routes in links" v-bind:key="routes.id" 
       :to="`${routes.page}`" class="navbar_links a-deco"> {{routes.text}} </router-link>
+      <router-link to="/Login"><button type='submit' class='btn pull-right'>Logout</button></router-link>
     </nav>
   </div>
 </template>
-
 <script>
-
 
 export default {
   name: 'Navigation',
@@ -16,12 +15,12 @@ export default {
     return {
       links: [
 
-         {
-          id: 1,
-          text: 'Home',
-          page:'/',
-          // component: toolBar,
-        },
+        //  {
+        //   id: 1,
+        //   text: 'Home',
+        //   page:'/',
+        //   // component: toolBar,
+        // },
         {
           id: 2,
           text: 'Brainstorming',
@@ -61,7 +60,29 @@ export default {
 
 <style  scoped>
 .navbar_links {color: black;font-size: 20px;margin:10px;}
-.navbar_links:hover{color: white;border-bottom:5px solid #FFCC65;}
-.navbar {width: 100%; background-color: #d9d9d9
+.navbar_links:hover{color: white;}
+.navbar {width: 100%; background-color:transparent;border-bottom: 1px solid black;
 ;margin:0!important;min-height: auto;padding: 10px}
+.btn {
+  /* background:rgb(255, 204, 101); */
+  background:black;
+  box-shadow: inset 0 0 2px 0 #EEEEEE;
+  outline: none;
+  border: 1px solid black;
+  padding: .3rem 1rem .4rem;
+  cursor: pointer;
+  border-radius: .25rem;
+  margin-top: 0rem;
+  color: white;
+  width: 5%;
+}
+.btn:hover{background: transparent;color:#000;border:1px solid black; }
+
+.btn:active {
+  box-shadow: inset 2px 2px 2px 0 #E0E0E0;
+}
+
+.router-link-active{
+  color: white;
+}
 </style>

@@ -6,6 +6,7 @@ import App from './App.vue'
 import form from './components/form.vue'
 import tabs from './components/tabs.vue'
 import Home from './components/Home.vue'
+import login from './components/login.vue'
 import brainstorming_form from './components/brainstorming_form.vue'
 import toolBartechnique from './components/toolBartechnique.vue'
 import toolBarprocess from './components/toolBarprocess.vue'
@@ -36,7 +37,8 @@ const routes =  [
   { path: '/Data', component: Data},
   { path: '/form', component: form},
   { path: '/Technique', component: Technique},
-  { path: '/Deployment', component: Deployment}
+  { path: '/Deployment', component: Deployment},
+  { path: '/Login', component: login}
 
 ];
 

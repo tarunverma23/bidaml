@@ -392,7 +392,9 @@
     list-style-type: none;
     font-size: 0.7em;
     color: #575959; /* change appearance of toolbar to fit to swarm interface */
-    border: 1px solid #bfcbd9;
+    /* border: 1px solid #bfcbd9; */
+    border: 1px solid black;
+
     border-radius: 4px;
     text-align: center;
   }
