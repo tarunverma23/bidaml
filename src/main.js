@@ -5,6 +5,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import form from './components/form.vue'
 import tabs from './components/tabs.vue'
+import Register from './components/Register.vue'
 import Home from './components/Home.vue'
 import login from './components/login.vue'
 import brainstorming_form from './components/brainstorming_form.vue'
@@ -38,8 +39,8 @@ const routes =  [
   { path: '/form', component: form},
   { path: '/Technique', component: Technique},
   { path: '/Deployment', component: Deployment},
-  { path: '/Login', component: login}
-
+  { path: '/Login', component: login},
+  { path: '/Register', component: Register},
 ];
 
 const router = new VueRouter ({
@@ -47,6 +48,23 @@ const router = new VueRouter ({
   mode: 'history'
 
 });
+
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyBS5g_mARUnCx7SmMMC2dIAErU0Qz_lX3A",
+  authDomain: "bidaml.firebaseapp.com",
+  databaseURL: "https://bidaml.firebaseio.com",
+  projectId: "bidaml",
+  storageBucket: "bidaml.appspot.com",
+  messagingSenderId: "428389800491",
+  appId: "1:428389800491:web:bc094ceabc38440940a86e",
+  measurementId: "G-HQQRVFLFS6"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
 
 
 Vue.config.productionTip = false;

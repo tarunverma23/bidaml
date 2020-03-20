@@ -1,6 +1,21 @@
 <template>
 <div class="text-center"> 
-  <h1> BiDaML </h1>
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 no-lr-pad"> 
+            <h1> BiDaML </h1>
+        </div>
+        <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 no-lr-pad"> 
+            <router-link to="/Login">
+            <button id="generate_button" class="btn brand-btn1">Login</button>
+            </router-link>
+        </div> 
+        <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"> 
+            <router-link to="/Register">
+            <button id="generate_button" class="btn brand-btn1">Register</button>
+            </router-link>
+        </div> 
+    </div>
+  
   <p class="subheading">Big Data Analytics Modeling Languages (BiDaML) helps end-users and domain experts in developing
     data analytics solutions
   </p>

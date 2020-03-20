@@ -4,36 +4,46 @@
   <div class="note1 note--down"><p>{{ note1 }}</p></div>
   <div class="login">
     <header class="login--header">
-      <span class="login_heading">Log In and start using BiDaML</span>
+      <span class="login_heading">Register now and start using BiDaML</span>
     </header>
     <section class="login--section">
-      <form class='login--form' @submit.prevent='makeAuth'>
+      <form class='login--form' @submit.prevent='onregister'>
         <fieldset class="">
-          <input type="text" v-model="login_id"  placeholder='Account ID' required @focus='inputFocus' />
+          <input type="text" v-model="register_fname"  placeholder='First Name' required @focus='inputFocus' />
           <svg viewbox='0 0 100 1' class='line'>
             <path class='line--default' d='M0 0 L300 0'></path>
           </svg>
         </fieldset>
         <fieldset>
-          <input type="password"  v-model="login_password" placeholder='Password' @focus='inputFocus' required />
+          <input type="text"  v-model="register_lname" placeholder='Last Name' @focus='inputFocus' required />
           <svg viewbox='0 0 100 1' class='line'>
             <path class='line--default' d='M0 0 L300 0'></path>
           </svg>
         </fieldset>
         <fieldset>
-          <button type='submit' class='btn'>Login</button>
+          <input type="text"  v-model="register_company" placeholder='Company' @focus='inputFocus' required />
+          <svg viewbox='0 0 100 1' class='line'>
+            <path class='line--default' d='M0 0 L300 0'></path>
+          </svg>
+        </fieldset>
+        <fieldset>
+          <input type="text"  v-model="register_email" placeholder='Email Id' @focus='inputFocus' required />
+          <svg viewbox='0 0 100 1' class='line'>
+            <path class='line--default' d='M0 0 L300 0'></path>
+          </svg>
+        </fieldset>
+        <fieldset>
+          <input type="password"  v-model="register_password" placeholder='Password' @focus='inputFocus' required />
+          <svg viewbox='0 0 100 1' class='line'>
+            <path class='line--default' d='M0 0 L300 0'></path>
+          </svg>
+        </fieldset>
+        <fieldset>
+          <button type='submit' class='btn'>Register</button>
           <div class="margin-top-10">
             <router-link to="/"><span class="loin_text_color font-size-12">Return to Home Page</span></router-link>
           </div>
-          <div class="">
-            <router-link to="/Register"><span class="loin_text_color font-size-12">Go to User Registration</span></router-link>
-          </div>
         </fieldset>
-         <div style="text-align:left;font-size:12px">
-              <span>For Guest Account use:</span><br>
-              <span>Account Id: guest</span> <br>
-              <span>Password: 00000</span>
-          </div>
       </form>
     </section>
   </div>
@@ -41,13 +51,18 @@
 </template>
 
 <script>
+
 export default {
     data(){
         return {
             note: '',
             note1: '',
-            login_id: '',
-            login_password: '',
+            register_fname: '',
+            register_lname: '',
+            register_company: '',
+            register_email: '',
+            register_password: '',
+            
    
         }
     },
@@ -74,24 +89,28 @@ export default {
     }
   },
    methods: {
-    makeAuth (e) {
+    onregister (e) {
       // write you own auth logic here
       
-      if (this.login_id =='guest' && this.login_password == '00000') {
-          this.note1 = 'Login Successful'
-          this.$router.push('form');
-      }
+    //   if (this.login_id =='guest' && this.login_password == '00000') {
+    //       this.note1 = 'Login Successful'
+    //       this.$router.push('form');
+    //   }
 
-      else{
-          this.note = 'Login failed'
-      }
+    //   else{
+    //       this.note = 'Login failed'
+    //   }
     },
     inputFocus () {
       this.note = ''
       this.note1 = ''
-    }
+    },
+
+    
   }
 }
+
+
 </script>
 
 <style scoped>
@@ -119,7 +138,7 @@ fieldset {
 .container {
   background: none;
   width: 800px;
-  margin: 12rem auto 0;
+  margin: 6rem auto 0;
   text-align: center;
   box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .15);
   position: relative;
