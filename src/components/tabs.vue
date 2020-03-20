@@ -1,14 +1,23 @@
 <template>
   <div>
     <nav class="navbar">
+      <router-link to="/apphome">
+        <span><i class="fa fa-home home color-black" style="font-size:25px"></i></span>
+      </router-link>
       <router-link v-for="routes in links" v-bind:key="routes.id" 
       :to="`${routes.page}`" class="navbar_links a-deco"> {{routes.text}} </router-link>
-      <router-link to="/Login"><button type='submit' class='btn pull-right'>Logout</button></router-link>
+      <!-- <router-link to="/Login"> -->
+      <button type='submit' v-on:click="onlogout" class='btn pull-right'>
+        <router-link to="/Login" class="color-white">
+        Logout 
+        </router-link>
+      </button>
+      
     </nav>
   </div>
 </template>
 <script>
-
+import firebase from 'firebase';
 export default {
   name: 'Navigation',
   data() {
@@ -18,7 +27,7 @@ export default {
         //  {
         //   id: 1,
         //   text: 'Home',
-        //   page:'/',
+        //   page:'/apphome',
         //   // component: toolBar,
         // },
         {
@@ -54,7 +63,34 @@ export default {
         }
       ]
     }
-  }
+  },
+
+  methods: {
+    onlogout(){
+      // firebase.auth().signOut().then(function() {
+      //   console.log('Signed Out');
+      //   // alert("Logout Successful");
+      //   // this.$router.push('Login');
+      //   },
+      //   function(error) {
+      //     console.error('Sign Out Error', error);
+      //   });
+
+      firebase.auth().signOut().then(function() {
+          // alert("Logout Successful");
+          console.log('Signed Out');
+      });
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+        } else {
+        // No user is signed in.
+         alert("Logout Successful");
+        //  this.$router.push('Login');
+        }
+      });
+    }
+  },
 }
 </script>
 

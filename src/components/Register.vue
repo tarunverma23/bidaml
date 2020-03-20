@@ -27,13 +27,13 @@
           </svg>
         </fieldset>
         <fieldset>
-          <input type="text"  v-model="register_email" placeholder='Email Id' @focus='inputFocus' required />
+          <input type="text"  v-model="email" placeholder='Email Id' @focus='inputFocus' required />
           <svg viewbox='0 0 100 1' class='line'>
             <path class='line--default' d='M0 0 L300 0'></path>
           </svg>
         </fieldset>
         <fieldset>
-          <input type="password"  v-model="register_password" placeholder='Password' @focus='inputFocus' required />
+          <input type="password"  v-model="password" placeholder='Password' @focus='inputFocus' required />
           <svg viewbox='0 0 100 1' class='line'>
             <path class='line--default' d='M0 0 L300 0'></path>
           </svg>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-
+import firebase from 'firebase';
 export default {
     data(){
         return {
@@ -60,10 +60,8 @@ export default {
             register_fname: '',
             register_lname: '',
             register_company: '',
-            register_email: '',
-            register_password: '',
-            
-   
+            email: '',
+            password: '',
         }
     },
 
@@ -91,26 +89,48 @@ export default {
    methods: {
     onregister (e) {
       // write you own auth logic here
-      
     //   if (this.login_id =='guest' && this.login_password == '00000') {
     //       this.note1 = 'Login Successful'
     //       this.$router.push('form');
     //   }
-
     //   else{
     //       this.note = 'Login failed'
     //   }
+    // [START createwithemail]
+    var email = this.email;
+    var password = this.password;
+      firebase.auth().createUserWithEmailAndPassword(email,password).then(function(){
+          alert("Registration Successful");
+      }) 
+      
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+      });
+      // [END createwithemail]
+
+      firebase.auth().onAuthStateChanged(user => {
+          if(user) {
+            this.$router.push('Login');
+          }
+        });
     },
     inputFocus () {
       this.note = ''
       this.note1 = ''
     },
-
     
   }
 }
-
-
 </script>
 
 <style scoped>

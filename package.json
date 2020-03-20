@@ -17,6 +17,7 @@
   "dependencies": {
     "d3": "4.9.1",
     "file-saver": "^2.0.0",
+    "firebase": "^7.12.0",
     "interactjs": "^1.3.4",
     "medium-editor": "^5.23.3",
     "networkvizjs": "git+https://github.com/AndrewJakubowicz/networkVizJS.git#b2832302636036408ec6c53b63b9de1efa02c032",

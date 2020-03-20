@@ -1,9 +1,7 @@
 <template>
 <div class="text-center"> 
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-        <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 no-lr-pad"> 
-            <h1> BiDaML </h1>
-        </div>
+        <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10"></div>
         <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 no-lr-pad"> 
             <router-link to="/Login">
             <button id="generate_button" class="btn brand-btn1">Login</button>
@@ -14,6 +12,9 @@
             <button id="generate_button" class="btn brand-btn1">Register</button>
             </router-link>
         </div> 
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad"> 
+            <h1> BiDaML </h1>
+        </div>
     </div>
   
   <p class="subheading">Big Data Analytics Modeling Languages (BiDaML) helps end-users and domain experts in developing
@@ -102,7 +103,16 @@
             <span><i class="fa fa-check check"></i></span>
         </div> -->
 
-     </div> <!-- right part ends here -->
+     <!-- </div> right part ends here -->
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-50 homepage1"> 
+        <img src="https://bidaml.s3-ap-southeast-2.amazonaws.com/static/img/homepage1.png">
+    </div>
+
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-50 homepage1 margin-bottom-20"> 
+        <img src="https://bidaml.s3-ap-southeast-2.amazonaws.com/static/img/homepage2.jpg" width="85%">
+    </div>
+     
+     
   </div>
 </div>
   
@@ -113,7 +123,7 @@
 .feature{font-size: 18px;};
 .subheading{font-size: 20px;border-bottom:1px solid black;margin-left:200px;margin-right:200px}
 .content_div{margin-left: 130px}
-.homepage1{border-right: 1px solid black;height: 50vh; margin-top: 20px}
-.homepage2{color:black}
+.homepage1{ margin-top: 90px;}
+
 </style>
 

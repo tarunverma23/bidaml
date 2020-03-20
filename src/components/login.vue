@@ -9,13 +9,13 @@
     <section class="login--section">
       <form class='login--form' @submit.prevent='makeAuth'>
         <fieldset class="">
-          <input type="text" v-model="login_id"  placeholder='Account ID' required @focus='inputFocus' />
+          <input type="text" v-model="email"  placeholder='Registered Email id' required @focus='inputFocus' />
           <svg viewbox='0 0 100 1' class='line'>
             <path class='line--default' d='M0 0 L300 0'></path>
           </svg>
         </fieldset>
         <fieldset>
-          <input type="password"  v-model="login_password" placeholder='Password' @focus='inputFocus' required />
+          <input type="password"  v-model="password" placeholder='Password' @focus='inputFocus' required />
           <svg viewbox='0 0 100 1' class='line'>
             <path class='line--default' d='M0 0 L300 0'></path>
           </svg>
@@ -29,11 +29,11 @@
             <router-link to="/Register"><span class="loin_text_color font-size-12">Go to User Registration</span></router-link>
           </div>
         </fieldset>
-         <div style="text-align:left;font-size:12px">
+         <!-- <div style="text-align:left;font-size:12px">
               <span>For Guest Account use:</span><br>
               <span>Account Id: guest</span> <br>
               <span>Password: 00000</span>
-          </div>
+          </div> -->
       </form>
     </section>
   </div>
@@ -41,13 +41,14 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 export default {
     data(){
         return {
             note: '',
             note1: '',
-            login_id: '',
-            login_password: '',
+            email: '',
+            password: '',
    
         }
     },
@@ -73,23 +74,56 @@ export default {
       }
     }
   },
+
+  
    methods: {
+     
     makeAuth (e) {
       // write you own auth logic here
-      
-      if (this.login_id =='guest' && this.login_password == '00000') {
-          this.note1 = 'Login Successful'
-          this.$router.push('form');
-      }
+      // if (this.login_id =='guest' && this.login_password == '00000') {
+      //     this.note1 = 'Login Successful'
+      //     this.$router.push('form');
+      // }
+      // else{
+      //     this.note = 'Login failed'
+      // }
 
-      else{
-          this.note = 'Login failed'
-      }
+      // Sign in with email and pass.
+        // [START authwithemail]
+        var email = this.email;
+        var password = this.password;
+        
+        firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+           alert("Login Successful");
+        })
+        .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/wrong-password') {
+            alert('Wrong password.');
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+          document.getElementById('quickstart-sign-in').disabled = false;
+        });
+        // [END authwithemail]
+
+        firebase.auth().onAuthStateChanged(user => {
+          if(user) {
+            this.$router.push('apphome');
+          }
+        });
+        
+        
     },
     inputFocus () {
       this.note = ''
       this.note1 = ''
-    }
+    },
+  
   }
 }
 </script>

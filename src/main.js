@@ -28,19 +28,20 @@ import Data from '@/components/Data'
 import Technique from '@/components/Technique'
 import Deployment from '@/components/Deployment'
 import VueRouter from 'vue-router' 
-
-
+import firebase from 'firebase';
+import apphome from '@/components/apphome';
 
 
 const routes =  [
   { path: '/', component: Home},
   { path: '/Process', component: Process},
   { path: '/Data', component: Data},
-  { path: '/form', component: form},
+  { path: '/form', component: form, meta:{ requiresAuth: true}},
   { path: '/Technique', component: Technique},
   { path: '/Deployment', component: Deployment},
   { path: '/Login', component: login},
   { path: '/Register', component: Register},
+  { path: '/apphome', component: apphome},
 ];
 
 const router = new VueRouter ({
