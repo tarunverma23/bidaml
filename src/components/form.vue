@@ -19,7 +19,7 @@
                   <button id="generate_button" class="btn brand-btn1">Generate</button>
                 </div>
         </div>
-
+ 
      <!-------------------------------- Modal starts ---------------------------------->
       <div class="modal fade" id="generate_modal" role="dialog">
         <div class="modal-dialog">

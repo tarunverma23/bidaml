@@ -1,13 +1,10 @@
 <template>
   <!-- <h1>{{ quiz.title }}</h1> -->
   <div id="app" v-cloak>
-
     <div class="row">
       <div class="large-12 columns">
         <!-- <h1>{{ quiz.title }}</h1> -->
-
         <div class="callout padding-left-40">
-
           <!-- <div v-for="(item, index) in items" :key="item.id">
             {{index}}. {{item.name}}
         </div> -->
@@ -20,14 +17,19 @@
                 <!-- for each response of the current question -->
                 <li v-for="response in question.responses" :key="response.id" class="margin-right-20">
                   <label>
-                    <!-- <input type="radio"
+                    <input type="radio" style="display:none"
                       v-bind:value="response.value"
                       v-bind:name="index"
-                      v-model="userResponses[index]"> {{response.text}} -->
-                    <input class="form-control" v-model="userResponses[index]"  type="text" id="" name="" v-bind:placeholder="response.text">
+                      v-model="userResponses[index]"> {{response.text}}
+                    <!-- <input class="form-control" v-model="userResponses[index]"  type="text" id="" name="" v-bind:placeholder="response.text"> -->
+                  <select v-model="userResponses[index]" class="form-control">
+                    <option v-for="option in response.options" :key="option.id">
+                      {{ option }}
+                      </option>
+                  </select>
+                  <!-- <span>Selected: {{ selected }}</span> -->
                   </label>
                 </li>
-
               </ul>
               <!-- The two navigation buttons -->
               <!-- Note: prev is hidden on first question -->
@@ -40,23 +42,19 @@
             </div>
           </div>
 
-
           <!-- Last page, quiz is finished, display result -->
           <div v-show="questionIndex === quiz.questions.length">
             <button class="btn brand-btn1" v-on:click="generate">
               Generate
             </button>
-            <h3>The Result</h3>
+            <!-- <h3>The Result</h3>
             <p>
               Here it is: {{ score() }}
-            </p>
+            </p> -->
           </div>
-
         </div>
-
       </div>
     </div>
-
   </div>
 </template>
 
@@ -67,30 +65,65 @@
       id: 1,
       text: 'Business Requirement Analysis for technique diagram',
       responses: [{
-        id: 1,
-        text: 'Enter the problem',
-        value: 'Batman',
+        text: 'Do you have data?',
+        options:["Yes","No"],
+        
       },
       ],
     },
       {
         id: 2,
-        text: 'Business Requirement Analysis',
+        text: 'Business Requirement Analysis for technique diagram',
         responses: [{
-          text: 'Enter the objectives',
-          value: 'The Flash',
+          text: 'how many samples you have/expected to have?',
+          options:["Not Known","Less than 50","50 or above and less than 10K",
+           "10K or above and less than 100K","100K or above"],          
+          
         },
         ],
       },
       {
         id: 3,
-        text: 'Business Requirement Analysis',
+        text: 'Business Requirement Analysis for technique diagram',
         responses: [{
-          text: 'Enter the target',
-          value: 'The Flash',
+          text: 'do you know where you can collect/purchase data?',
+          options:["Yes","No"],
+          
         },
         ],
       },
+      {
+        id: 4,
+        text: 'Business Requirement Analysis for technique diagram',
+        responses: [{
+          text: 'Are you aiming to predict a category/quantity/structure?',
+          options:["Prediction is not required","Not known","Predict a category","Predict a quantity",
+          "Predict a structure"],
+
+        },
+        ],
+      },
+      {
+        id: 5,
+        text: 'Business Requirement Analysis for technique diagram',
+        responses: [{
+          text: 'do you know the number of categories?',
+          options:["Yes","No"],
+          
+        },
+        ],
+      },
+      {
+        id: 6,
+        text: 'Business Requirement Analysis for technique diagram',
+        responses: [{
+          text: 'Do you have labelled data?',
+          options:["Yes","No"],
+          
+        },
+        ],
+      },
+    
 
     ],
   };
@@ -103,10 +136,10 @@
         userResponses: Array(),
         sampleQuestionData: ['New','New1','New2'],
         sampleQuestionData_hexagon: ['New1'],
+        selected: '',
       };
     },
 
-    
     methods: {
         generate() {
         //alert(this.userResponses.length);
@@ -120,7 +153,7 @@
             this.$emit('generateGraph', this.sampleQuestionData);
         }
       },
-      
+
       // Go to next question
       next: function () {
         this.questionIndex++;
@@ -150,15 +183,10 @@
         return maxEl;
       },
     },
-
-
   };
 </script>
 
 <style scoped>
+  .alignment {display: inline-flex;padding-left: 0;}
 
-  .alignment {
-    display: inline-flex;
-    padding-left: 0;
-  }
 </style>
