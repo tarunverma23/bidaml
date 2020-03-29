@@ -5,7 +5,7 @@
         <span><i class="fa fa-home home color-black" style="font-size:25px"></i></span>
       </router-link>
       <router-link v-for="routes in links" v-bind:key="routes.id" 
-      :to="`${routes.page}`" class="navbar_links a-deco"> {{routes.text}} </router-link>
+      :to="`${routes.page}`" target="_blank" class="navbar_links a-deco"> {{routes.text}} </router-link>
       <!-- <router-link to="/Login"> -->
       <button type='submit' v-on:click="onlogout" class='btn pull-right'>
         <router-link to="/Login" class="color-white">
