@@ -66,7 +66,7 @@
 
   export default {
     props: ['mouse', 'shape'],
-    name: 'toolBar',
+    name: 'toolBarprocess',
     data() {
       return {
         tools: [
@@ -192,7 +192,7 @@
             shape: 'capsule',
             icon: `.${fa5Icons}#capsule-comment`,
             tip: 'Rounded Rectangle',
-          }
+          },
           // {
           //   shape: 'green_circle',
           //   icon: `.${fa5Icons}#green_circle`,
@@ -203,6 +203,17 @@
           //   icon: `.${fa5Icons}#diamond`,
           //   tip: 'diamond',
           // },
+          // {
+          //   shape: 'red_circle',
+          //   icon: `.${fa5Icons}#red_circle`,
+          //   tip: 'red_circle',
+          // },
+          // {
+          //   shape: 'alert',
+          //   icon: `.${fa5Icons}#alert`,
+          //   tip: 'alert',
+          // },
+
         ],
         showShapeMenu: false,
         shapeToolVisibility: 'visible',
@@ -392,9 +403,7 @@
     list-style-type: none;
     font-size: 0.7em;
     color: #575959; /* change appearance of toolbar to fit to swarm interface */
-    /* border: 1px solid #bfcbd9; */
-    border: 1px solid black;
-
+    border: 1px solid #bfcbd9;
     border-radius: 4px;
     text-align: center;
   }

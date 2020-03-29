@@ -71,10 +71,8 @@
       this.$log.info('graph - created', this.w, this);
       this.chunkId = this.chunk ? this.chunk.id : undefined;
       this.parse();
-      
     },
     mounted() {
-      
       this.height = document.getElementById('xb-arg-map').clientHeight;
       this.width = document.getElementById('xb-arg-map').clientWidth;
       this.$log.info('graph - height changed', this.height);
@@ -163,9 +161,8 @@
         let textNodes = [];
         let graph = this.graphChunk && this.graphChunk.content;
 
-        if (graph && this.graphChunk.deleted) {
-          graph = null;
-        } else if (graph && !graph.deleted && graph.length > 0) {
+        if (graph && this.graphChunk.deleted) graph = null;
+        else if (graph && !graph.deleted && graph.length > 0) {
           try {
             graph = JSON.parse(graph);
             saved = graph.saved;
@@ -184,16 +181,16 @@
         }
       },
       save(savedDiagram, svg, textNodes) {
-        let graph = JSON.stringify({
+        const graph = JSON.stringify({
           saved: savedDiagram,
           svg: svg.outerHTML,
-          textNodes: textNodes,
+          textNodes,
         });
-        let payload = {
+        const payload = {
           graphChunk: this.graphChunk,
           chunk: this.chunk,
           id: this.chunkId,
-          graph: graph,
+          graph,
         };
         this.$log.info('graph - saved', payload, JSON.parse(savedDiagram));
         this.$emit('save', payload);
@@ -202,9 +199,8 @@
         this.svgData = svg;
         this.graphData = JSON.stringify({
           saved: JSON.parse(savedDiagram),
-          textNodes: textNodes,
+          textNodes,
         });
-
       },
       closeSave() {
         this.saveDisplay = false;

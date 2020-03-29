@@ -33,6 +33,13 @@ module.exports = {
       'js': 'never',
       'vue': 'never'
     }],
+<<<<<<< HEAD
+=======
+  'no-mixed-operators': ['error',
+    {
+    'allowSamePrecedence': true
+    }],
+>>>>>>> upstream1/master
     'linebreak-style': 'off',
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {

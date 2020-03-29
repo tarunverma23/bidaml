@@ -82,4 +82,4 @@ const app = new Vue({
   ...App
 })
 
-//export {app}
+export {app}  ///////////////////////
