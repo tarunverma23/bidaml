@@ -44,9 +44,11 @@
 
           <!-- Last page, quiz is finished, display result -->
           <div v-show="questionIndex === quiz.questions.length">
-            <button class="btn brand-btn1" v-on:click="generate">
-              Generate
-            </button>
+            <!-- <button class="btn brand-btn1" v-on:click="generate">
+              View recommendations
+            </button> -->
+            <button class="btn brand-btn1" style="width:200px" @click="showModal">View recommendations</button>
+            <result-modal ref="modal"></result-modal>
             <!-- <h3>The Result</h3>
             <p>
               Here it is: {{ score() }}
@@ -55,10 +57,40 @@
         </div>
       </div>
     </div>
+    <!-- ------------------ recommendation modal -------------------------------- -->
+    <div id="result-modal">
+      <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h4 class="modal-title" id="resultModalLabel">{{ modalheader }}</h4>
+              <ul type="none">
+                <li v-for="recommender in recommender" :key="recommender.modalresponse" class= "recommendations">
+                  {{ recommender.modalresponse }}
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ------------------ recommendation modal ends-------------------------------- -->
   </div>
 </template>
 
 <script>
+
+
   var quiz = {
     title: 'heading',
     questions: [{
@@ -137,6 +169,19 @@
         sampleQuestionData: ['New','New1','New2'],
         sampleQuestionData_hexagon: ['New1'],
         selected: '',
+        modalheader: 'This is the list of recommendations based on your responses',
+        recommender: [
+          { modalresponse: ' ' },
+          { modalresponse: ' ' },
+          { modalresponse: ' ' },
+          { modalresponse: ' ' },
+          { modalresponse: ' ' },
+          { modalresponse: ' ' },
+          { modalresponse: ' ' },
+          { modalresponse: ' ' },
+          { modalresponse: ' ' },
+          { modalresponse: ' ' },
+        ],
       };
     },
 
@@ -152,6 +197,59 @@
         {
             this.$emit('generateGraph', this.sampleQuestionData);
         }
+      },
+      showModal() {
+      
+      if (this.userResponses[3]== 'Predict a category' && this.userResponses[5]== 'Yes' ){
+        if (this.userResponses[1]=='10K or above and less than 100K'){
+          this.recommender[0].modalresponse = 'Linear SVC is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/svm.html#classification'
+          this.recommender[1].modalresponse = 'If its not working, if your data is text, refer to https://scikit-learn.org/stable/modules/naive_bayes.html'
+          this.recommender[2].modalresponse = 'Otherwise refer to https://scikit-learn.org/stable/modules/neighbors.html'
+          this.recommender[3].modalresponse = 'If not working refer to one of the following links'
+          this.recommender[4].modalresponse = 'https://scikit-learn.org/stable/modules/svm.html#classification'
+          this.recommender[5].modalresponse = 'https://scikit-learn.org/stable/modules/ensemble.html'
+        }
+        else {
+          this.recommender[0].modalresponse = 'Stochastic Gradient Descent is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/sgd.html#classification'
+          this.recommender[1].modalresponse = 'If its not working, refer to https://scikit-learn.org/stable/modules/kernel_approximation.html'
+        }
+        
+      }
+      else if (this.userResponses[3]== 'Predict a category'){
+        if (this.userResponses[1]=='10K or above and less than 100K'){
+          this.recommender[0].modalresponse = 'If there are a few important features, you can try Lasso (https://scikit-learn.org/stable/modules/linear_model.html#lasso), or ElasticNet (https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)"'
+          this.recommender[1].modalresponse = 'If not, you can try ridge regression (https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression), or SVR with linear kernel (https://scikit-learn.org/stable/modules/svm.html#regression)"'
+          this.recommender[2].modalresponse = 'If these dont work, you can try SVR with nonlinear kernel (https://scikit-learn.org/stable/modules/svm.html#regression), or ensemble regressors (https://scikit-learn.org/stable/modules/ensemble.html)'
+
+        }
+
+        else {
+          this.recommender[0].modalresponse = 'Stochastic Gradient Descent is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/sgd.html#regression'
+
+        }
+
+      }
+
+      else if (this.userResponses[3]== 'Predict a category' && this.userResponses[5]== 'No') {
+        if (this.userResponses[4]== 'Yes') {
+          if (this.userResponses[1]=='10K or above and less than 100K') {
+            this.recommender[0].modalresponse = 'K-means is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/clustering.html#k-means'
+            this.recommender[1].modalresponse = 'If its not working, refer to Spectral clustering (https://scikit-learn.org/stable/modules/clustering.html#spectral-clustering)'
+            this.recommender[2].modalresponse = 'or Gaussian mixture models (https://scikit-learn.org/stable/modules/mixture.html)'
+            this.recommender[3].modalresponse = 'Mean Shift(https://scikit-learn.org/stable/modules/clustering.html#mean-shift)'
+            this.recommender[4].modalresponse = 'Variational Bayesian Gaussian Mixture(https://scikit-learn.org/stable/modules/mixture.html#bgmm)'
+
+          }
+          else {
+            this.recommender[0].modalresponse = 'Mini Batch K-Means(https://scikit-learn.org/stable/modules/clustering.html#mini-batch-k-means)'
+          }
+
+        }
+      
+
+      }
+      $('#resultModal').modal('show');
+      
       },
 
       // Go to next question
@@ -188,5 +286,7 @@
 
 <style scoped>
   .alignment {display: inline-flex;padding-left: 0;}
+  .recommendations{border:1px solid grey;margin-top: 10px;padding:10px;
+  background-color: #FAD877; color: black}
 
 </style>

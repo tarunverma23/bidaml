@@ -11,16 +11,11 @@ import login from './components/login.vue'
 import brainstorming_form from './components/brainstorming_form.vue'
 import toolBartechnique from './components/toolBartechnique.vue'
 import toolBarprocess from './components/toolBarprocess.vue'
-
 import css from './components/common.css'
-
 import * as log from 'loglevel'
 Vue.component('app-form', form);
 Vue.component('app-tabs', tabs);
 Vue.component('brainstorming_form', brainstorming_form);
-
-
-
 import Router from 'vue-router';
 Vue.use(Router);
 import Process from '@/components/Process'
@@ -49,6 +44,8 @@ const router = new VueRouter ({
   mode: 'history'
 
 });
+
+
 
 
 // Your web app's Firebase configuration

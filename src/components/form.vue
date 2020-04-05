@@ -195,35 +195,7 @@
 
 <script>
 export default {
-
-  
 }
-
-
-      // <!-- ----------testing----------testing---------testing -------------testing------------------ -->
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // <!-- ----------testing----------testing---------testing -------------testing--------------- -->
-
 
         // modal click event starts here
         $(document).on('click', '#generate_button', function(){

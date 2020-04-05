@@ -23,12 +23,6 @@
                      @clickedButton="hoverEdgeInteract($event)">
     </hover-menu-edge>
 
-
-    <!-- <div v-show="display1">
-      <h1>Hello</h1>
-    </div> -->
-
-
     <toolBar v-show="this.$route.path =='/form'" @clickedAction="changeMouseState($event)"
              @changeDefaultShape="changeDefaultShape($event)"
              @mouseEnter="closeHoverMenu()"
@@ -53,8 +47,6 @@
              :shape="defaultShape"
              :mouse="mouseState"/>
 
-
-
     <color-picker v-show="ifColorPickerOpen"
                   :style="styleObject"
                   :value="colors"
@@ -64,8 +56,6 @@
     </color-picker>
     <div id="graph" v-on:dblclick="dblClickOnPage">
       
-      
-    
     </div>
 
   </div>
@@ -140,12 +130,7 @@
   const UNDERLINE = 'UNDERLINE';
   const UNDO = 'UNDO';
   const WIDTH = 'WIDTH';
-
-  // const palette = [
-  //   '#4D4D4D', '#999999', '#FFFFFF', '#F44E3B', '#FE9200', '#F6ECAF', '#DBDF00', '#A4DD00', '#AADCDC', '#73D8FF', '#AEA1FF', '#FDA1FF',
-  //   '#333333', '#808080', '#CCCCCC', '#D33115', '#E27300', '#FCDC00', '#B0BC00', '#68BC00', '#16A5A5', '#009CE0', '#7B64FF', '#FA28FF',
-  //   '#000000', '#666666', '#B3B3B3', '#9F0500', '#C45100', '#FCC400', '#808900', '#194D33', '#0C797D', '#0062B1', '#653294', '#AB149E'
-  // ];  
+ 
   // -- edited palette --
   // const palette = [
   //   '#C33039', '#F18C22', '#FFECA8', '#fcfcfc'
@@ -242,7 +227,6 @@
     },
     data() {
       return {
-        //display1: false,
         ifColorPickerOpen: false,
         coloredNodeId: undefined,
         updateValue: null,
@@ -289,7 +273,8 @@
         activeSelect: new HighlightSelection(),
         mouseStateObs$: undefined,
         defaultShape: 'rect',
-        page: '/home'
+        page: '/home',
+        text_to_save: ' ',
       };
     },
     mounted() {
@@ -545,6 +530,9 @@
     },
 
     methods: {
+      save_text(){
+        alert("it works");
+      },
       async showLoadingMask(text) {
         const target = this.$el;
         const options = {
@@ -890,12 +878,25 @@
                 };
                 switch (action.prop) {
                   case TEXT: {
+                    
                     textNodesEditHelper('text');
                     this.graph.editNode({
                       property: 'shortname',
                       id: idArray,
                       value: values,
                     });
+                    // --for  node identification based on shape ---
+                    const nodes = idArray.map(id => this.graph.getNode(id));
+                    nodes.forEach(d => console.log (d.nodeShape));
+                    var text_to_save = '' 
+                    nodes.forEach(d => text_to_save= (d.nodeShape));
+                    alert(text_to_save);
+                    if (text_to_save == 'rect'){
+                      alert("rect");
+                    }
+                    else if (text_to_save == 'circle'){
+                      alert("circle")
+                    }
                     break;
                   }
                   case IMAGE: {

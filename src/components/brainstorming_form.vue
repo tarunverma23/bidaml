@@ -1,17 +1,13 @@
 <template>
   <!-- <h1>{{ quiz.title }}</h1> -->
   <div id="" v-cloak>
-
     <div class="row">
       <div class="large-12 columns">
         <!-- <h1>{{ quiz.title }}</h1> -->
-
         <div class="callout padding-left-40">
-
           <!-- <div v-for="(item, index) in items" :key="item.id">
             {{index}}. {{item.name}}
         </div> -->
-
           <div v-for="(question, index) in quiz.questions " :key="question.id">
             <!-- Hide all questions, show only the one with index === to current question index -->
             <div v-show="index === questionIndex">
@@ -27,7 +23,6 @@
                     <input class="form-control form_textbox" v-model="userResponses[index]"  type="text" ref="inputBox" name="" v-bind:placeholder="response.text">
                   </label>
                 </li>
-
               </ul>
               <!-- The two navigation buttons -->
               <!-- Note: prev is hidden on first question -->
@@ -39,19 +34,16 @@
               </button>
             </div>
           </div>
-
-
           <!-- Last page, quiz is finished, display result -->
           <div v-show="questionIndex === quiz.questions.length">
             <button class="btn brand-btn1" v-on:click="generate">
               Generate
             </button>
-            <h3>The Result</h3>
+            <!-- <h3>The Result</h3>
             <p>
               Here it is: {{ score() }}
-            </p>
+            </p> -->
           </div>
-
         </div>
 
       </div>
