@@ -48,7 +48,34 @@
 
       </div>
     </div>
-
+        <!-- ------------------ brainstorming result modal -------------------------------- -->
+    <div id="result-modal">
+      <div class="modal fade" id="brainstorming_resultModal" tabindex="-1" role="dialog" aria-labelledby="brainstorming_resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h4 class="modal-title" id="brainstorming_resultModalLabel">{{ modalheader }}</h4>
+              <ul type="none">
+                <li v-for="recommender in recommender" :key="recommender.modalresponse" class= "recommendations">
+                  {{ recommender.modalresponse }}
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ------------------ brainstorming result modal ends-------------------------------- -->
   </div>
 </template>
 
@@ -105,11 +132,13 @@
         if (this.userResponses.length ==1)
         {
             this.$emit('generateGraph', this.sampleQuestionData_hexagon);
+            $('#brainstorming_resultModal').modal('show');
 
         }
         else 
         {
             this.$emit('generateGraph', this.sampleQuestionData);
+            $('#brainstorming_resultModal').modal('show');
         }
       },
       
@@ -121,7 +150,7 @@
         {
           console.log("it works");
         }
-                this.questionIndex++;
+        this.questionIndex++;
 
       },
       // Go to previous question

@@ -57,6 +57,7 @@
     <div id="graph" v-on:dblclick="dblClickOnPage">
       
     </div>
+    
 
   </div>
 </template>
@@ -275,6 +276,8 @@
         defaultShape: 'rect',
         page: '/home',
         text_to_save: ' ',
+        problem_to_save: Array(),
+        tasks_to_save: Array(),
       };
     },
     mounted() {
@@ -885,20 +888,32 @@
                       id: idArray,
                       value: values,
                     });
-                    // --for  node identification based on shape ---
+
+
+                    // --for  node identification based on shape  and getting text---
                     const nodes = idArray.map(id => this.graph.getNode(id));
                     nodes.forEach(d => console.log (d.nodeShape));
-                    var text_to_save = '' 
-                    nodes.forEach(d => text_to_save= (d.nodeShape));
-                    alert(text_to_save);
-                    if (text_to_save == 'rect'){
-                      alert("rect");
+                    var node_identify = '' 
+                    var text_to_save = ''
+                    nodes.forEach(d => text_to_save= (d.shortname));
+                    nodes.forEach(d => node_identify= (d.nodeShape));
+                    //alert(text_to_save);
+
+                    if (node_identify == 'rect'){
+                      this.problem_to_save = this.text_to_save;
+                      //alert(node_identify);
+                      console.log(this.problem_to_save);
                     }
-                    else if (text_to_save == 'circle'){
-                      alert("circle")
+                    else if (node_identify == 'circle'){
+                      //alert("circle")
+                      //alert(node_identify);
+                      this.tasks_to_save = this.text_to_save;
+                      console.log(this.tasks_to_save);
                     }
                     break;
                   }
+
+
                   case IMAGE: {
                     textNodesEditHelper('img');
                     this.graph.editNode({
