@@ -143,7 +143,7 @@
           },
           {
             action: 'DELETE',
-            icon: ['trash'],
+            icon: ['far fa-trash-alt'],
             toggled: false,
             tip: 'Delete (Del)'
           },

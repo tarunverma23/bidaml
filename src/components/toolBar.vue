@@ -143,7 +143,7 @@
           },
           {
             action: 'DELETE',
-            icon: ['trash'],
+            icon: ['trash-o'],
             toggled: false,
             tip: 'Delete (Del)'
           },

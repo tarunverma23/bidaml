@@ -25,13 +25,15 @@ import Deployment from '@/components/Deployment'
 import VueRouter from 'vue-router' 
 import firebase from 'firebase';
 import apphome from '@/components/apphome';
+import brainstorming_recommend from '@/components/brainstorming_recommend';
+Vue.component('brainstorming_recommend', brainstorming_recommend);
 
 
 const routes =  [
   { path: '/', component: Home},
-  { path: '/Process', component: Process},
+  { path: '/Process', component: Process,props:true},
   { path: '/Data', component: Data},
-  { path: '/form', component: form, meta:{ requiresAuth: true}},
+  { path: '/form', component: form,props:true, meta:{ requiresAuth: true}},
   { path: '/Technique', component: Technique},
   { path: '/Deployment', component: Deployment},
   { path: '/Login', component: login},
