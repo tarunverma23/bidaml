@@ -178,6 +178,11 @@
             icon: `.${fa5Icons}#circle-ellipse`,
             tip: 'Circle',
           },
+           {
+            shape: 'circle_orange',
+            icon: `.${fa5Icons}#circle_orange`,
+            tip: 'circle_orange',
+          },
           {
             shape: 'file',
             icon: `.${fa5Icons}#file`,
@@ -193,11 +198,7 @@
             icon: `.${fa5Icons}#capsule-comment`,
             tip: 'Rounded Rectangle',
           },
-          // {
-          //   shape: 'green_circle',
-          //   icon: `.${fa5Icons}#green_circle`,
-          //   tip: 'green_circle',
-          // },
+         
           // {
           //   shape: 'diamond',
           //   icon: `.${fa5Icons}#diamond`,

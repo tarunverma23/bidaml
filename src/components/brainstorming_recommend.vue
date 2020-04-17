@@ -73,14 +73,14 @@ export default {
             //console.log(this.save_tasks);
             const database_problem = this.save_hexagon;
             const database_tasks = this.save_tasks;
-           var user = firebase.auth().currentUser;
-           var user_id = user.uid;
-           //console.log(user_id);
+            var user = firebase.auth().currentUser;
+            var user_id = user.uid;
+            //console.log(user_id);
              
             firebase.database().ref(user_id).push({problem:database_problem,tasks:database_tasks})
             .then((data) => { console.log(data);})
             .catch((error) => { console.log(error);})
-            
+
 
             // firebase.database().ref(user_id).push({tasks:database_tasks})
             // .then((data) => { console.log(data);})

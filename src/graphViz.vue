@@ -1676,14 +1676,25 @@
          **/
         this.linkTool = linkTool(this.graph, $mousedown, $mouseOverNode, this.toNode, (tripletObject) => {
          console.log(tripletObject);
-         const x = tripletObject.subject.nodeShape;
-         //alert(x);
+         const arrow_source = tripletObject.subject.nodeShape;
+         const arrow_target = tripletObject.object.nodeShape;
+         //alert(y);
+// --------------------------------------line restriction rules begin here-------------------------------
+          if (arrow_source  == 'rect' && arrow_target == 'circle' 
+          ||arrow_source  == 'circle' && arrow_target == 'rect' ){
+            alert ("Action not allowed");
+          }
+
+          else {
+            this.rootObservable.next({
+              type: CREATE,
+              triplet: tripletObject, // icons
+            });
+          }
+
+// --------------------------------------line restriction rules ends here-------------------------------
 
           
-          this.rootObservable.next({
-            type: CREATE,
-            triplet: tripletObject, // icons
-          });
         }, () => {
           this.changeMouseState(POINTER);
         });

@@ -35,17 +35,13 @@
                   {{ recommender.modalresponse }}
                 </li>
               </ul> -->
+             
               {{ display_hexagon }}
-              
-
-              <li v-for="display_tasks in display_tasks" :key="display_tasks.tasks_list" class= "recommendations">
+             
+              <li v-for="display_tasks in display_tasks" :key="display_tasks.tasks_list" class= "">
                 {{ display_tasks.tasks_list }}
               </li>
 
-              <!-- {{ display_tasks }} -->
-
-              <!-- {{ display_tasks }} -->
-              
 
             </div>
             <div class="modal-footer">
@@ -60,10 +56,6 @@
 
         <!-- <brainstorming_recommend :save_hexagon= "save_hexagon" :save_tasks= "save_tasks">  </brainstorming_recommend> -->
   </div>
-
-  
-
-  
 </template>
 
 <script>
@@ -71,33 +63,94 @@ import firebase from 'firebase';
 import brainstorming_recommend from '@/components/brainstorming_recommend';
 export default {
   // name: 'Process',
-  components: {brainstorming_recommend},
-  props: ['save_hexagon', 'save_tasks'],
+  //components: {brainstorming_recommend},
+  //props: ['save_hexagon', 'save_tasks'],
   //props: {save_hexagon:{type:String, default:'default'}},
   data(){
     return {
-      display_tasks: [ { tasks_list: display_tasks}],
-      display_hexagon: 'sgedggr',
-    };
+      display_tasks: [ { tasks_list: ' '}],
+      display_hexagon: '',
+      fetch_count: '0',
+      
+    }
 
   },
   methods:{
     showModal(){
+          // var fetch_count = 0;
           var database = firebase.database();
           var user = firebase.auth().currentUser;
           var user_id = user.uid;
+          var pr = '';
+          var length = '';
+          
           var starCountRef = firebase.database().ref(user_id);
-          // Add ref of child if any
-          starCountRef.on('value', function(snapshot) {
-          console.log(snapshot.val());
-           //console.log(snapshot.getChildren().val());
-          });
-          //$('#process_resultModal').modal('show');
+          //console.log(fetch_count);
+            // Add ref of child if any
+            starCountRef.on('value', function(snapshot) {
+            //console.log(snapshot.val());
+            var x = snapshot.val();
+            //console.log(Object.entries(x));
+            const [keyOne, _] = Object.entries(x);
+            var p = keyOne[keyOne.length - 1];
+            // console.log(p);
+            const problem = p['problem']
+            const tasks = p['tasks']
+            //console.log(tasks[1]);
+             length= tasks.length;
+             //console.log(length);
+            pr = p.problem;
+            //console.log(pr); 
+            });
+            this.display_hexagon = pr;
+            
 
-        },
+            for (var i = 0;  i<length; i++)
+            {
+              console.log("loop working");
+            }
+
+            // if (this.fetch_count == '0' ){
+               
+            //    this.display_tasks.push({tasks_list : 'testing'});
+               
+
+            //    this.fetch_count = '1';
+            //    //console.log(fetch_count);
+            // }
+            $('#process_resultModal').modal('show');
+           
+          
+         
+           
+           
+
+          
+    },
+
+        
+
+
+        
   },
   
 }
+
+     //console.log(Object.entries(snapshot.val()));
+          // const [key,value] = Object.entries(snapshot.val());
+          // console.log(key,value);
+          //const snapshotVal = snapshot.val();
+          //console.log(snapshot, typeof snapshotVal)
+          // const firstval = snapshotVal[user_id];
+          // console.log(firstval);
+          // const val = snapshot.val();
+          // const val2 =Object.entries(val);
+          // console.log(val2);
+          // const val = snapshot.val();
+          // const [key, valThree]  = Object.entries(val);
+          // const [keyOne, valFour]  = Object.entries(valThree);
+          // console.log(valFour);
 </script>
 <style>
 </style>
+
