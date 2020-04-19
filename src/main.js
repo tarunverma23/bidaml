@@ -16,6 +16,7 @@ import * as log from 'loglevel'
 Vue.component('app-form', form);
 Vue.component('app-tabs', tabs);
 Vue.component('brainstorming_form', brainstorming_form);
+//Vue.component('Process_form', Process);
 import Router from 'vue-router';
 Vue.use(Router);
 import Process from '@/components/Process'

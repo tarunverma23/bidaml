@@ -3,13 +3,15 @@
     <app-tabs v-if="this.$route.path =='/form' || this.$route.path =='/Data' || this.$route.path =='/Process'
     || this.$route.path =='/Technique' || this.$route.path =='/Deployment'">
     </app-tabs>
-    <router-view></router-view>
+    <router-view @generate_task="generatecircle"></router-view>
     <brainstorming_form v-show="display_questions1()" 
     @generateGraph="generateFromForm" :save_hexagon= "save_hexagon" :save_tasks= "save_tasks">
     </brainstorming_form>
     <technique_form v-show="display_questions2()" @generateGraph="generateFromForm"></technique_form>
+
+    <!-- <Process_form @generate_problem="generate_icon_process"> </Process_form> -->
     
-    <graphViz @problem_to_save="savehexagon" @tasks_to_save="savetasks"
+    <graphViz  @problem_to_save="savehexagon" @tasks_to_save="savetasks"
     v-if="this.$route.path =='/form' || this.$route.path =='/Data' || this.$route.path =='/Process'
     || this.$route.path =='/Technique' || this.$route.path =='/Deployment'"
               id="xb-arg-map"
@@ -37,6 +39,7 @@
   import brainstorming_form from './components/brainstorming_form';
   import technique_form from './components/technique_form';
   import uuid from 'uuid/v4';
+  import Process from '@/components/Process'
 //import technique_formVue from './components/technique_form.vue';
 
   export default {
@@ -100,6 +103,18 @@
 
 
       // },
+
+      generatecircle (payload){
+         this.$refs.graph.rootObservable.next(
+          {
+            type: 'CREATE',
+            newNode: {text:payload, nodeShape: 'circle'},
+            //triplet: edges,
+            
+          },
+        );
+
+      },
 
       generateFromForm(payload) {
         const nodes = payload.map((text, i ) => {
@@ -165,6 +180,11 @@
             triplet: edges,
           },
         );
+      },
+
+      generate_icon_process(){
+        alert("it works");
+
       },
 
        display_questions1() {
