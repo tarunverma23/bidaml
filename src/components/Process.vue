@@ -131,8 +131,8 @@ export default {
               }
                //console.log(fetch_count);
             }
-            this.condition1 = false;
-            this.condition2 = true;
+            // this.condition1 = false;
+            // this.condition2 = true;
 
             if(pr){
               $('#process_resultModal').modal('show');
@@ -144,10 +144,13 @@ export default {
         // this.showModal().then(() => {
         //  $('#process_resultModal').modal('show');
         // });
+        this.condition1 = false;
+        this.condition2 = true;
          this.showModal()
-           setTimeout(async () => {
+            
+            setTimeout(() => {
               $('#process_resultModal').modal('show');
-            }, 2000);
+             }, 2000);
     },
 
     generate_task_icon(x){
