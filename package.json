@@ -23,6 +23,8 @@
     "firebase": "^7.13.1",
     "medium-editor": "^5.23.3",
     "networkvizjs": "git+https://github.com/AndrewJakubowicz/networkVizJS.git#1889250c7341ae33790b4f29c52fcd6f063df7cd",
+    "pip": "0.0.1",
+    "python": "0.0.4",
     "rxjs": "^6.5.4",
     "uuid": "^7.0.2",
     "vue": "^2.6.11",

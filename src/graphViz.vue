@@ -95,6 +95,7 @@
   import toolBarprocess from './components/toolBarprocess';
   import toolBartechnique from './components/toolBartechnique';
   import toolBardata from './components/toolBardata';
+  import brainstorming_form from './components/brainstorming_form';
 
   
   const ADDNOTE = 'ADDNOTE';
@@ -275,9 +276,9 @@
         mouseStateObs$: undefined,
         defaultShape: 'rect',
         page: '/home',
-        text_to_save: ' ',
-        problem_to_save: Array(),
-        tasks_to_save: Array(),
+        //text_to_save: ' ',
+        //problem_to_save: Array(),
+        //tasks_to_save: Array(),
       };
     },
     mounted() {
@@ -533,9 +534,9 @@
     },
 
     methods: {
-      save_text(){
-        alert("it works");
-      },
+      // save_text(){
+      //   alert("it works");
+      // },
       async showLoadingMask(text) {
         const target = this.$el;
         const options = {
@@ -892,23 +893,28 @@
 
                     // --for  node identification based on shape  and getting text---
                     const nodes = idArray.map(id => this.graph.getNode(id));
-                    nodes.forEach(d => console.log (d.nodeShape));
+                    const nodes1 = idArray.map(id => this.graph.getNode(id));
+                    //nodes.forEach(d => console.log (d.nodeShape));
                     var node_identify = '' 
                     var text_to_save = ''
                     nodes.forEach(d => text_to_save= (d.shortname));
-                    nodes.forEach(d => node_identify= (d.nodeShape));
+                    nodes1.forEach(d => node_identify= (d.nodeShape));
                     //alert(text_to_save);
 
                     if (node_identify == 'rect'){
-                      this.problem_to_save = this.text_to_save;
+                      //alert(text_to_save);
+                      this.$emit('problem_to_save', text_to_save);
+                      //this.problem_to_save = this.text_to_save;
                       //alert(node_identify);
-                      console.log(this.problem_to_save);
+                      //alert(text_to_save);
+                      //console.log(this.problem_to_save);
                     }
                     else if (node_identify == 'circle'){
-                      //alert("circle")
+                      this.$emit('tasks_to_save', text_to_save);
                       //alert(node_identify);
-                      this.tasks_to_save = this.text_to_save;
-                      console.log(this.tasks_to_save);
+                      //alert(text_to_save);
+                      //this.tasks_to_save = this.text_to_save;
+                      //console.log(this.tasks_to_save);
                     }
                     break;
                   }
@@ -1630,7 +1636,7 @@
 
           edgeColor: predicate => predicate ? (predicate.stroke ? predicate.stroke.substring(1) : '000000') : '000000',
 
-          edgeArrowhead: predicate => (predicate && typeof predicate.arrowhead === 'number') ? predicate.arrowhead : 1,
+          edgeArrowhead: predicate => (predicate && typeof predicate.arrowhead === 'number') ? predicate.arrowhead : 3,
 
           edgeStroke: predicate => predicate ? (predicate.strokeWidth ? predicate.strokeWidth : 2) : 2,
 
@@ -1669,10 +1675,26 @@
          Edge link tool
          **/
         this.linkTool = linkTool(this.graph, $mousedown, $mouseOverNode, this.toNode, (tripletObject) => {
-          this.rootObservable.next({
-            type: CREATE,
-            triplet: tripletObject,
-          });
+         console.log(tripletObject);
+         const arrow_source = tripletObject.subject.nodeShape;
+         const arrow_target = tripletObject.object.nodeShape;
+         //alert(y);
+// --------------------------------------line restriction rules begin here-------------------------------
+          if (arrow_source  == 'rect' && arrow_target == 'circle' 
+          ||arrow_source  == 'circle' && arrow_target == 'rect' ){
+            alert ("Action not allowed");
+          }
+
+          else {
+            this.rootObservable.next({
+              type: CREATE,
+              triplet: tripletObject, // icons
+            });
+          }
+
+// --------------------------------------line restriction rules ends here-------------------------------
+
+          
         }, () => {
           this.changeMouseState(POINTER);
         });

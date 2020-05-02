@@ -93,9 +93,21 @@ export default {
         var email = this.email;
         var password = this.password;
         
-        firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
-           alert("Login Successful");
+        // firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+        //    alert("Login Successful");
+           
+        // })
+
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((data) => { 
+          //firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+        console.log(data);alert("Login Successful");
+        console.log(data.user.email);
+        // firebase.database().ref('user_id').push(database_tasks)
+        //     .then((data) => { console.log(data);})
+        //     .catch((error) => { console.log(error);})
         })
+
         .catch(function(error) {
           // Handle Errors here.
           var errorCode = error.code;

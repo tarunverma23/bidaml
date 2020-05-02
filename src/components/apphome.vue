@@ -15,7 +15,7 @@
         </div>
 
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-            <h2 class="">Welcome to BiDaML</h2>
+            <h2 class="">Welcome to BiDaML Application</h2>
         </div>
 
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
@@ -33,12 +33,7 @@
                 <h3 class="margin-top-5">Brainstorming Diagram</h3>
              </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="text-justify margin-top-0"> <b>Brainstorming diagram</b> provides an overview of your data analytics project and all the tasks and sub-tasks that are involved in designing the solution at a very high level. You can include comments and extra information for the other stakeholders;
                 </p>
             </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">
@@ -55,12 +50,7 @@
                 <h3 class="margin-top-5">Process Diagram</h3>
              </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="text-justify margin-top-0"><b>Process diagram </b> the analytics processes/steps including key details related to the participants (individuals and organizations), operations, and conditions in your data analytics project capturing details from a high-level to a lower-level;
                 </p>
             </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">
@@ -77,12 +67,7 @@
                 <h3 class="margin-top-5">Data Diagram</h3>
              </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="text-justify margin-top-0"><b>Data diagrams</b> document the data and artifacts that are produced in each of the previous diagrams at a low level, i.e. the technical AI-based layer. They also define in detail the outputs associated with different tasks, e.g. output information, reports, results, visualizations, and outcomes;
                 </p>
             </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">
@@ -99,12 +84,7 @@
                 <h3 class="margin-top-5">Technique Diagram</h3>
              </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="text-justify margin-top-0"><b>Technique diagrams</b> show the step by step procedures and processes for each sub-task in the brainstorming and process diagrams at a low level of abstraction. They show what techniques have been used or are planned to be used and whether they were successful or there were any issues;
                 </p>
             </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">
@@ -121,12 +101,7 @@
                 <h3 class="margin-top-5">Deployment Diagram</h3>
              </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <p class="text-justify margin-top-0"><b>Deployment diagram </b> depicts the run-time configuration, i.e. the system hardware, the software installed on it, and the middleware connecting different machines to each other for development related tasks.
                 </p>
             </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">

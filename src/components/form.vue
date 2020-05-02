@@ -14,11 +14,11 @@
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad">
+        <!-- <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad">
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad">
                   <button id="generate_button" class="btn brand-btn1">Form questions</button>
                 </div>
-        </div>
+        </div> -->
  
      <!-------------------------------- Modal starts ---------------------------------->
       <div class="modal fade" id="generate_modal" role="dialog">
@@ -183,7 +183,7 @@
         </div>
       </div> 
       <!-- ----------------------------model ends here ------------------------------------>
-       <div class="woo-toast"></div>
+    <div class="woo-toast"></div>
        
     </div>
     

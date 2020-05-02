@@ -7,7 +7,7 @@
         <div class="callout padding-left-40">
           <!-- <div v-for="(item, index) in items" :key="item.id">
             {{index}}. {{item.name}}
-        </div> -->
+          </div> -->
           <div v-for="(question, index) in quiz.questions " :key="question.id">
             <!-- Hide all questions, show only the one with index === to current question index -->
             <div v-show="index === questionIndex">
@@ -24,6 +24,7 @@
                   </label>
                 </li>
               </ul>
+              
               <!-- The two navigation buttons -->
               <!-- Note: prev is hidden on first question -->
               <button class="btn brand-btn1" v-if="questionIndex > 0" v-on:click="prev">
@@ -39,47 +40,22 @@
             <button class="btn brand-btn1" v-on:click="generate">
               Generate
             </button>
+            <brainstorming_recommend :save_hexagon= "save_hexagon" :save_tasks= "save_tasks">  </brainstorming_recommend>
             <!-- <h3>The Result</h3>
             <p>
               Here it is: {{ score() }}
             </p> -->
-          </div>
+          </div>        
         </div>
 
       </div>
     </div>
-        <!-- ------------------ brainstorming result modal -------------------------------- -->
-    <div id="result-modal">
-      <div class="modal fade" id="brainstorming_resultModal" tabindex="-1" role="dialog" aria-labelledby="brainstorming_resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <h4 class="modal-title" id="brainstorming_resultModalLabel">{{ modalheader }}</h4>
-              <ul type="none">
-                <li v-for="recommender in recommender" :key="recommender.modalresponse" class= "recommendations">
-                  {{ recommender.modalresponse }}
-                </li>
-              </ul>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ------------------ brainstorming result modal ends-------------------------------- -->
+
   </div>
 </template>
 
 <script>
+
   var quiz = {
     title: 'heading',
     questions: [{
@@ -88,7 +64,7 @@
       responses: [{
         id: 1,
         text: 'Enter the problem',
-        value: 'Batman',
+        value: '',
       },
       ],
     },
@@ -97,7 +73,7 @@
         text: 'Business Requirement Analysis',
         responses: [{
           text: 'Enter the objectives',
-          value: 'The Flash',
+          value: '',
         },
         ],
       },
@@ -106,15 +82,15 @@
         text: 'Business Requirement Analysis',
         responses: [{
           text: 'Enter the target',
-          value: 'The Flash',
+          value: '',
         },
         ],
       },
-
     ],
   };
 
   export default {
+    props: ['save_hexagon', 'save_tasks'],
     data() {
       return {
         quiz: quiz,
@@ -122,6 +98,9 @@
         userResponses: Array(),
         sampleQuestionData: ['New','New1','New2'],
         sampleQuestionData_hexagon: ['New1'],
+        //problem_to_save: 'testing'
+        //text_to_save1: 'sfsfsf',
+
       };
     },
 
@@ -131,14 +110,15 @@
         //alert(this.userResponses.length);
         if (this.userResponses.length ==1)
         {
-            this.$emit('generateGraph', this.sampleQuestionData_hexagon);
-            $('#brainstorming_resultModal').modal('show');
+            this.$emit('generateGraph', this.userResponses);
+            //$('#brainstorming_resultModal').modal('show');
+            //alert(this.text_to_save);
 
         }
         else 
         {
-            this.$emit('generateGraph', this.sampleQuestionData);
-            $('#brainstorming_resultModal').modal('show');
+            this.$emit('generateGraph', this.userResponses);
+            //$('#brainstorming_resultModal').modal('show');
         }
       },
       
@@ -148,7 +128,7 @@
         console.log(this.userResponses);
         if (this.questionIndex===1 && this.userResponses[this.questionIndex] == 'test')
         {
-          console.log("it works");
+          console.log("test passed");
         }
         this.questionIndex++;
 
@@ -177,8 +157,6 @@
         return maxEl;
       },
     },
-
-
   };
 </script>
 

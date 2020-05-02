@@ -3,11 +3,16 @@
     <app-tabs v-if="this.$route.path =='/form' || this.$route.path =='/Data' || this.$route.path =='/Process'
     || this.$route.path =='/Technique' || this.$route.path =='/Deployment'">
     </app-tabs>
-    <router-view></router-view>
-    <brainstorming_form v-show="display_questions1()" @generateGraph="generateFromForm"></brainstorming_form>
+    <router-view @generate_task="generatecircle"></router-view>
+    <brainstorming_form v-show="display_questions1()" 
+    @generateGraph="generateFromForm" :save_hexagon= "save_hexagon" :save_tasks= "save_tasks">
+    </brainstorming_form>
     <technique_form v-show="display_questions2()" @generateGraph="generateFromForm"></technique_form>
+
+    <!-- <Process_form @generate_problem="generate_icon_process"> </Process_form> -->
     
-    <graphViz v-if="this.$route.path =='/form' || this.$route.path =='/Data' || this.$route.path =='/Process'
+    <graphViz  @problem_to_save="savehexagon" @tasks_to_save="savetasks"
+    v-if="this.$route.path =='/form' || this.$route.path =='/Data' || this.$route.path =='/Process'
     || this.$route.path =='/Technique' || this.$route.path =='/Deployment'"
               id="xb-arg-map"
               class="b-arg-map"
@@ -34,6 +39,7 @@
   import brainstorming_form from './components/brainstorming_form';
   import technique_form from './components/technique_form';
   import uuid from 'uuid/v4';
+  import Process from '@/components/Process'
 //import technique_formVue from './components/technique_form.vue';
 
   export default {
@@ -54,7 +60,8 @@
         svgData: undefined,
         graphData: undefined,
         display_questions: true,
-       
+        save_hexagon: '',
+        save_tasks: [ { tasks_list: ''}],
       };
       
     },
@@ -64,7 +71,6 @@
         this.$log.info('graph - width changed', this.w);
         this.width = this.w;
       },
-
       
     },
     created() {
@@ -78,20 +84,60 @@
       this.$log.info('graph - height changed', this.height);
     },
     methods: {
+      savehexagon(payload)
+      {
+       //alert (payload);
+       this.save_hexagon = payload;
+      },
+
+      savetasks(payload)
+      {
+       //alert (payload);
+       this.save_tasks.push({tasks_list: payload});
+      },
+
+      // savetasks(payload)
+      // {
+      //  //alert (payload);
+      //  this.save_tasks = payload;
+
+
+      // },
+
+      generatecircle (payload){
+         this.$refs.graph.rootObservable.next(
+          {
+            type: 'CREATE',
+            newNode: {text:payload, nodeShape: 'circle'},
+            //triplet: edges,
+            
+          },
+        );
+
+      },
 
       generateFromForm(payload) {
-        const nodes = payload.map((text) => {
+        const nodes = payload.map((text, i ) => {
           const id = `note-${uuid()}`;
           //alert(text);
-
-          if (text == "New1") {
+          if (i === 0){
             return {
             id,
             nodeShape: 'rect',
             text,
             hash: id,
           };
+          // ["a", "b", "c"].map(console.log)
           }
+
+          // if (text == "New1") {
+          //   return {
+          //   id,
+          //   nodeShape: 'rect',
+          //   text,
+          //   hash: id,
+          // };
+          // }
           else {
             return {
             id,
@@ -101,26 +147,28 @@
           };
           }
         });
-        
 
-        const edges = nodes
+         
+        const reOrderedNodes = payload.length === 3 ? [nodes[1], nodes[0] ,nodes[2]] : nodes;
+        
+        const edges = reOrderedNodes
           .slice(1)
           .reduce((acc, cur, idx) => {
             const edge = {
-              subject: nodes[idx],
+              subject: reOrderedNodes[idx],
               predicate: {
                 type: 'arrow',
                 text: '',
                 hash: `edge-${uuid()}`,
-                subject: nodes[idx].id,
-                object: nodes[idx + 1].id,
+                subject: reOrderedNodes[idx].id,
+                object: reOrderedNodes[idx + 1].id,
                 class: '',
                 arrowhead: 'N',
                 stroke: '#000000',
                 strokeWidth: 2,
                 strokeDasharray: 0,
               },
-              object: nodes[idx + 1],
+              object: reOrderedNodes[idx + 1],
             };
             return acc.concat(edge);
           }, []);
@@ -132,6 +180,11 @@
             triplet: edges,
           },
         );
+      },
+
+      generate_icon_process(){
+        alert("it works");
+
       },
 
        display_questions1() {
