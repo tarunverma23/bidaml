@@ -128,7 +128,7 @@
         console.log(this.userResponses);
         if (this.questionIndex===1 && this.userResponses[this.questionIndex] == 'test')
         {
-          console.log("it works");
+          console.log("test passed");
         }
         this.questionIndex++;
 

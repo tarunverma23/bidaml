@@ -1,7 +1,9 @@
 <template>
     <div class="margin-top-20">
-     <button class="btn brand-btn1" style="width:200px" @click="showModal">View recommendations</button>
-      <button class="btn brand-btn1" style="width:200px" @click="savedatabase">Save to Database</button>
+      <a href="http://bidaml.pythonanywhere.com/" target="_blank">
+         <button class="btn brand-btn1" style="width:200px">Find Similar Papers Tool</button>
+      </a>
+      <button class="btn brand-btn1" style="width:200px" @click="savedatabase">Save Diagram to Database</button>
 
              <!-- ------------------ brainstorming result modal -------------------------------- -->
     <div id="result-modal">

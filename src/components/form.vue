@@ -183,7 +183,7 @@
         </div>
       </div> 
       <!-- ----------------------------model ends here ------------------------------------>
-       <div class="woo-toast"></div>
+    <div class="woo-toast"></div>
        
     </div>
     
