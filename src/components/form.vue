@@ -7,13 +7,10 @@
                 </div>
               </div>
         </div>
-        <p class="text-justify border-bottom-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center no-lr-pad">
+                <p class="text-justify margin-top-0"> <b>Brainstorming diagram</b> provides an overview of your data analytics project and all the tasks and sub-tasks that are involved in designing the solution at a very high level. You can include comments and extra information for the other stakeholders.
+                </p>
+        </div>
         <!-- <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad">
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad">
                   <button id="generate_button" class="btn brand-btn1">Form questions</button>
@@ -34,7 +31,6 @@
                 <div class="text-center margin-top-20">
                 <p>Business Requirement Analysis</p>
                 </div>
-
                 <!--request demo form starts here -->
                   <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 padding-top-20">
                     <!-- <div class="col-md-1 col-lg-1 col-sm-1 col-xs-0"></div> -->
@@ -112,7 +108,7 @@
                         <option>No</option>
                       </select>
                   </div>
-                   
+                  
                   </div>
                   <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 padding-top-20">
                     <!-- <div class="col-md-1 col-lg-1 col-sm-1 col-xs-0"></div> -->
@@ -182,7 +178,13 @@
           </div>
         </div>
       </div> 
+
+
+
       <!-- ----------------------------model ends here ------------------------------------>
+     
+
+
     <div class="woo-toast"></div>
        
     </div>

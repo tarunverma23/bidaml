@@ -2,15 +2,13 @@
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
             <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10 text-center">
-                
             </div>
             <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
                 <router-link to="/Login" class="color-white">
                     <button type='submit' v-on:click="onlogout" class='btn brand-btn1 margin-top-10 pull-right'>
                     Logout 
                     </button>
-                </router-link>
-                
+                </router-link> 
             </div>
         </div>
 
@@ -19,110 +17,93 @@
         </div>
 
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-            <p class="text-justify border-bottom-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <p class="text-justify border-bottom-dark">BiDaML is a set of domain-specific visual languages to design, model, and specify data analytics solutions. It uses five diagram types at different levels of abstraction to support key aspects of big data analytics. These five diagram types cover the whole data analytics software development life cycle from higher-level requirement analysis and problem definition through the low-level deployment of the final product.
             </p>
-        </div>
+             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad "> 
+                <!-- box -->
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12  no-lr-pad">
+                    <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3  no-lr-pad">
+                    </div>
+                    <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8  no-lr-pad margin-top-50">
+                        <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2  no-lr-pad">
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-top-30 no-lr-pad">
+                                <span><b>High Level</b></span>
+                            </div>
+                            <i class="fas fa-long-arrow-alt-down arrow_down"></i>
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12  no-lr-pad">
+                                <span><b>Low Level</b></span>
+                            </div>
+                        </div> 
+                        
+                            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6  no-lr-pad">
+                                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                    <span class="color-grey">Choose and start drawing diagrams</span>
+                                </div>
+                                <a href="/form" target="_blank">
+                                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6  no-lr-pad">
+                                    <button type='submit' class='btn btn_yellow margin-top-10 pull-right'>
+                                        Brainstorming Diagram 
+                                    </button>
+                                </div>
+                                </a>
+                                <a href="/Process" target="_blank">
+                                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                                <button type='submit' class='btn btn_pink margin-top-10 pull-left'>
+                                    process Diagram 
+                                    </button>
+                                </div> 
+                                </a>
+                                <a href="/Data" target="_blank">
+                                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6  no-lr-pad">
+                                    <button type='submit' class='btn btn_green margin-top-10 pull-right'>
+                                    Data Diagram 
+                                    </button>
+                                </div> 
+                                </a>
+                                <a href="/Technique" target="_blank">
+                                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                                <button type='submit' class='btn btn_orange margin-top-10 pull-left'>
+                                Technique Diagram
+                                    </button>
+                                </div>
+                                </a>
 
-        <div class="col-md-11 col-lg-11 col-sm-11 col-xs-11 home_box margin-top-30">
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                <h3 class="margin-top-5">Brainstorming Diagram</h3>
-             </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0"> <b>Brainstorming diagram</b> provides an overview of your data analytics project and all the tasks and sub-tasks that are involved in designing the solution at a very high level. You can include comments and extra information for the other stakeholders;
-                </p>
+                                <a href="/Deployment" target="_blank">
+                                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12  no-lr-pad">
+                                <button type='submit' class='btn btn_blue margin-top-10'>
+                                    Deployment Diagram 
+                                    </button>
+                                </div>
+                                </a>
+                            </div> 
+                    
+                        
+                    </div>  
+                        
+                </div> 
             </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">
-                <router-link to="/form" target="_blank"> 
-                    <button type='submit' class='btn brand-btn1 btn_apphome'>
-                       Draw Brainstorming Diagram 
-                    </button>
-                </router-link>
-            </div>
-        </div>
-
-        <div class="col-md-11 col-lg-11 col-sm-11 col-xs-11 home_box margin-top-40">
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                <h3 class="margin-top-5">Process Diagram</h3>
-             </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0"><b>Process diagram </b> the analytics processes/steps including key details related to the participants (individuals and organizations), operations, and conditions in your data analytics project capturing details from a high-level to a lower-level;
-                </p>
-            </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">
-                <router-link to="/Process" target="_blank">
-                    <button type='submit' class='btn brand-btn1 btn_apphome'>
-                       Draw Process Diagram 
-                    </button>
-                </router-link>
-            </div>
-        </div>
-
-        <div class="col-md-11 col-lg-11 col-sm-11 col-xs-11 home_box margin-top-40">
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                <h3 class="margin-top-5">Data Diagram</h3>
-             </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0"><b>Data diagrams</b> document the data and artifacts that are produced in each of the previous diagrams at a low level, i.e. the technical AI-based layer. They also define in detail the outputs associated with different tasks, e.g. output information, reports, results, visualizations, and outcomes;
-                </p>
-            </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">
-                <router-link to="/Data" target="_blank">
-                    <button type='submit' class='btn brand-btn1 btn_apphome'>
-                       Draw Data Diagram 
-                    </button>
-                </router-link>
-            </div>
-        </div>
-
-        <div class="col-md-11 col-lg-11 col-sm-11 col-xs-11 home_box margin-top-40">
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                <h3 class="margin-top-5">Technique Diagram</h3>
-             </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0"><b>Technique diagrams</b> show the step by step procedures and processes for each sub-task in the brainstorming and process diagrams at a low level of abstraction. They show what techniques have been used or are planned to be used and whether they were successful or there were any issues;
-                </p>
-            </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">
-                <router-link to="/Technique" target="_blank">
-                    <button type='submit' class='btn brand-btn1 btn_apphome'>
-                       Draw Technique Diagram 
-                    </button>
-                </router-link>
-            </div>
-        </div>
-
-        <div class="col-md-11 col-lg-11 col-sm-11 col-xs-11 home_box margin-top-40">
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                <h3 class="margin-top-5">Deployment Diagram</h3>
-             </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                <p class="text-justify margin-top-0"><b>Deployment diagram </b> depicts the run-time configuration, i.e. the system hardware, the software installed on it, and the middleware connecting different machines to each other for development related tasks.
-                </p>
-            </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-bottom-10">
-                <router-link to="/Deployment" target="_blank">
-                    <button type='submit' class='btn brand-btn1 btn_apphome'>
-                       Draw Deployment Diagram 
-                    </button>
-                </router-link>
-            </div>
-        </div>
-
-       
-        
+        </div>   
     </div>
 </template>
 
 
 <style scoped>
-.home_box{border: 1px dotted black;margin-top: 30px;left: 18px;right: 18px;transition: all .2s ease-in-out;}
-.home_box:hover{transform: scale(1.05); cursor: pointer;}
+.home_box{border: 1px dotted black;margin-top: 30px;transition: all .2s ease-in-out;}
+/* .home_box:hover{transform: scale(1.05); cursor: pointer;} */
 .btn_apphome{width: 200px!important;}
+.btn_yellow{ color: white; background-color: rgba(231, 231, 16, 0.486);border: 1px solid white;transition: all .3s ease-in-out;font-size: 20px;padding: 20px;width: 100%;}
+.btn_pink{ color: white; background-color: #FF8F81;border: 1px solid white;transition: all .3s ease-in-out; margin: 20px;font-size: 20px;padding: 20px;width: 100%;}
+.btn_green{ color: white; background-color: #7AB648;border: 1px solid white;transition: all .3s ease-in-out; margin: 20pxx;font-size: 20px;padding: 20px;width: 100%;}
+.btn_orange{ color: white;background-color: #F18C23;border: 1px solid white;transition: all .3s ease-in-out; margin: 20px;font-size: 20px;padding: 20px;width: 100%;}
+.btn_blue{ color: white;background-color: #3AA6DE;border: 1px solid white;transition: all .3s ease-in-out;margin: 20px;font-size: 20px;;padding: 20px;width: 50%;} 
+
+.btn_yellow:hover{transform: scale(1.2); cursor: pointer;}
+.btn_pink:hover{transform: scale(1.2); cursor: pointer;}
+.btn_green:hover{transform: scale(1.2); cursor: pointer;}
+.btn_orange:hover{transform: scale(1.2); cursor: pointer;}
+.btn_blue:hover{transform: scale(1.2); cursor: pointer;}
+.arrow_down{font-size:200px;color:black;}
+
 
 </style>
 

@@ -1,8 +1,8 @@
 <template>
     <div class="margin-top-20">
-      <a href="http://bidaml.pythonanywhere.com/" target="_blank">
+      <!-- <a href="http://bidaml.pythonanywhere.com/" target="_blank">
          <button class="btn brand-btn1" style="width:200px">Find Similar Papers Tool</button>
-      </a>
+      </a> -->
       <button class="btn brand-btn1" style="width:200px" @click="savedatabase">Save Diagram to Database</button>
 
              <!-- ------------------ brainstorming result modal -------------------------------- -->

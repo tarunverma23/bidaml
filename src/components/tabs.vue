@@ -110,7 +110,6 @@ export default {
   border-radius: .25rem;
   margin-top: 0rem;
   color: white;
-  width: 5%;
 }
 .btn:hover{background: transparent;color:#000;border:1px solid black; }
 

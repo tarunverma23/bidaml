@@ -17,10 +17,21 @@
         </div>
     </div>
   
-  <p class="subheading">Big Data Analytics Modeling Languages (BiDaML) helps end-users and domain experts in developing
+  <!-- <p class="subheading1">Big Data Analytics Modeling Languages (BiDaML) helps end-users and domain experts in developing
     data analytics solutions
-  </p>
-  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-top-30">
+  </p> -->
+  <div class=" col-md-12 col-lg-12 col-sm-12 col-xs-12">
+       <p class="home_text">Big Data Analytics Modeling Languages (BiDaML) helps end-users and domain experts in developing
+    data analytics solutions
+      </p>
+    <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 "></div>
+   
+    <div class="col-md-7 col-lg-7 col-sm-7 col-xs-7  content_div">
+        
+    </div>
+  
+  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-top-10 ">
+    <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 no-lr-pad"></div>
     <div class="col-md-7 col-lg-7 col-sm-7 col-xs-7 no-lr-pad content_div">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-10">
             <!-- <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div> -->
@@ -105,25 +116,27 @@
 
      <!-- </div> right part ends here -->
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-50 homepage1"> 
-        <img src="https://bidaml.s3-ap-southeast-2.amazonaws.com/static/img/homepage1.png">
+        <img src="https://bidaml.s3-ap-southeast-2.amazonaws.com/img/home1.png">
     </div>
 
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-50 homepage1 margin-bottom-20"> 
-        <img src="https://bidaml.s3-ap-southeast-2.amazonaws.com/static/img/homepage2.jpg" width="85%">
+        <img src="https://bidaml.s3-ap-southeast-2.amazonaws.com/img/home2.jpg" width="85%">
     </div>
      
      
   </div>
 </div>
+</div>
   
 </template>
 
 <style scoped>
-.check{font-size: 25px;margin-right:10px};
-.feature{font-size: 18px;};
-.subheading{font-size: 20px;border-bottom:1px solid black;margin-left:200px;margin-right:200px}
-.content_div{margin-left: 130px}
+.check{font-size: 25px;margin-right:10px}
+.feature{font-size: 18px;}
+.content_div{margin-left: 95px}
 .homepage1{ margin-top: 90px;}
+.home_text{font-size: 17px}
+.main_content{border:1px solid black;}
 
 </style>
 

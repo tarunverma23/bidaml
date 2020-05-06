@@ -7,13 +7,10 @@
                 </div>
               </div>
         </div>
-        <p class="text-justify border-bottom-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center no-lr-pad">
+                <p class="text-justify margin-top-0"><b>Data diagrams</b> document the data and artifacts that are produced in each of the previous diagrams at a low level, i.e. the technical AI-based layer. They also define in detail the outputs associated with different tasks, e.g. output information, reports, results, visualizations, and outcomes.
+                </p>
+       </div>
   </div>
 </template>
 
@@ -22,8 +19,8 @@ export default {
   name: 'Data',
   data(){
     return {
-      email: "xyz",
-      web: "put your site url"
+      email: "",
+      web: ""
     }
   }
 }

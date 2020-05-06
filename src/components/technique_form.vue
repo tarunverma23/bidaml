@@ -202,7 +202,7 @@
       
       if (this.userResponses[3]== 'Predict a category' && this.userResponses[5]== 'Yes' ){
         if (this.userResponses[1]=='10K or above and less than 100K'){
-          this.recommender[0].modalresponse = 'Linear SVC is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/svm.html#classification'
+          this.recommender[0].modalresponse = 'Linear SVC is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/svm.html#classification '
           this.recommender[1].modalresponse = 'If its not working, if your data is text, refer to https://scikit-learn.org/stable/modules/naive_bayes.html'
           this.recommender[2].modalresponse = 'Otherwise refer to https://scikit-learn.org/stable/modules/neighbors.html'
           this.recommender[3].modalresponse = 'If not working refer to one of the following links'
