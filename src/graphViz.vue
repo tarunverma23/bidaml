@@ -61,6 +61,7 @@
                   ref="vueColorPicker">
     </color-picker>
     <div id="graph" v-on:dblclick="dblClickOnPage">
+      <!-- <button v-on:click="scrollToTop"></button> -->
       
     </div>
     
@@ -159,57 +160,57 @@
         }
       },
 
-      display1: {
-        type: Boolean,
-        default: function () {
-          var currentUrl = window.location.pathname;
-         if (this.$route.path=="/form"){
-            return true;
-         }
-        else{
-        return false;
-         }
-        }
-      },
+      // display1: {
+      //   type: Boolean,
+      //   default: function () {
+      //     var currentUrl = window.location.pathname;
+      //    if (this.$route.path=="/form"){
+      //       return true;
+      //    }
+      //   else{
+      //   return false;
+      //    }
+      //   }
+      // },
 
-      display2: {
-        type: Boolean,
-        default: function () {
-          var currentUrl = window.location.pathname;
-         if (this.$route.path=="/Process"){
-            return true;
-         }
-        else{
-        return false;
-         }
-        }
-      },
+      // display2: {
+      //   type: Boolean,
+      //   default: function () {
+      //     var currentUrl = window.location.pathname;
+      //    if (this.$route.path=="/Process"){
+      //       return true;
+      //    }
+      //   else{
+      //   return false;
+      //    }
+      //   }
+      // },
 
-      display3: {
-        type: Boolean,
-        default: function () {
-          var currentUrl = window.location.pathname;
-         if (currentUrl=="/Technique"){
-            return true;
-         }
-        else{
-        return false;
-         }
-        }
-      },
+      // display3: {
+      //   type: Boolean,
+      //   default: function () {
+      //     var currentUrl = window.location.pathname;
+      //    if (currentUrl=="/Technique"){
+      //       return true;
+      //    }
+      //   else{
+      //   return false;
+      //    }
+      //   }
+      // },
 
-      display4: {
-        type: Boolean,
-        default: function () {
-          var currentUrl = window.location.pathname;
-         if (currentUrl=="/Data"){
-            return true;
-         }
-        else{
-        return false;
-         }
-        }
-      },
+      // display4: {
+      //   type: Boolean,
+      //   default: function () {
+      //     var currentUrl = window.location.pathname;
+      //    if (currentUrl=="/Data"){
+      //       return true;
+      //    }
+      //   else{
+      //   return false;
+      //    }
+      //   }
+      // },
 
       highlightedNodeId: null,
       savedDiagram: null,
@@ -555,6 +556,10 @@
         this.responseLoadingMask = this.$loading(options);
         return await this.$nextTick();
       },
+
+      // scrollToTop() {
+      //           window.scrollTo(0,0);
+      // },
 
       hideLoadingMask() {
         const me = this;

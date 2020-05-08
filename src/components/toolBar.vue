@@ -32,6 +32,7 @@
                    :xlink:href="item.icon"></use>
             </svg>
           <span class="screen-reader-text">{{ item.shape }}</span>
+          <span class="tooltiptext">{{item.tip}}</span>
           </span>
         </li>
       </ul>
@@ -55,6 +56,11 @@
             <span class="screen-reader-text">{{ item.action }}</span>
           <span class="tooltiptext">{{item.tip}}</span>
         </span>
+      </li>
+      <li>
+        <button v-on:click="scrollToTop" class="top_button" title="Scroll to the top">
+        <i class="fas fa-arrow-alt-circle-up"></i>
+        </button>
       </li>
     </ul>
   </div>
@@ -119,7 +125,7 @@
             action: 'SAVE',
             icon: ['floppy-o'],
             toggled: false,
-            tip: 'Save (Ctrl+S)',
+            tip: 'Save on your computer(Ctrl+S)',
           },
         ],
         selectTools: [
@@ -176,27 +182,27 @@
           {
             shape: 'circle',
             icon: `.${fa5Icons}#circle-ellipse`,
-            tip: 'Circle',
+            tip: 'Task',
           },
            {
             shape: 'circle_orange',
             icon: `.${fa5Icons}#circle_orange`,
-            tip: 'circle_orange',
+            tip: 'High Level Task',
           },
           {
             shape: 'file',
             icon: `.${fa5Icons}#file`,
-            tip: 'file',
+            tip: 'Input',
           },
           {
             shape: 'rect',
             icon: `.${fa5Icons}#rect-hexagon`,
-            tip: 'Rectangle',
+            tip: 'Problem',
           },
           {
             shape: 'capsule',
             icon: `.${fa5Icons}#capsule-comment`,
-            tip: 'Rounded Rectangle',
+            tip: 'Comment',
           },
          
           // {
@@ -226,6 +232,10 @@
     methods: {
       mouseEnter() {
         this.$emit('mouseEnter');
+      },
+
+      scrollToTop() {
+                window.scrollTo(0,0);
       },
       clicked(action) {
         this.showShapeMenu = false;
@@ -437,4 +447,6 @@
   .graph-unorderedList {
     background: white;
   }
+
+  .top_button{border: none;background-color: transparent;margin-top: 4px}
 </style>

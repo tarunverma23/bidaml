@@ -32,6 +32,7 @@
                    :xlink:href="item.icon"></use>
             </svg>
           <span class="screen-reader-text">{{ item.shape }}</span>
+          <span class="tooltiptext">{{item.tip}}</span>
           </span>
         </li>
       </ul>
@@ -55,6 +56,11 @@
             <span class="screen-reader-text">{{ item.action }}</span>
           <span class="tooltiptext">{{item.tip}}</span>
         </span>
+      </li>
+      <li>
+          <button v-on:click="scrollToTop" class="top_button" title="Scroll to the top">
+          <i class="fas fa-arrow-alt-circle-up"></i>
+          </button>
       </li>
     </ul>
   </div>
@@ -119,7 +125,7 @@
             action: 'SAVE',
             icon: ['floppy-o'],
             toggled: false,
-            tip: 'Save (Ctrl+S)',
+            tip: 'Save to your computer (Ctrl+S)',
           },
         ],
         selectTools: [
@@ -176,32 +182,32 @@
           {
             shape: 'circle',
             icon: `.${fa5Icons}#circle-ellipse`,
-            tip: 'Circle',
+            tip: 'Task',
           },
           {
             shape: 'data',
             icon: `.${fa5Icons}#data`,
-            tip: 'data',
+            tip: 'Data',
           },
           {
             shape: 'code_file',
             icon: `.${fa5Icons}#code_file`,
-            tip: 'code_file',
+            tip: 'Model',
           },
           {
             shape: 'multi_data',
             icon: `.${fa5Icons}#multi_data`,
-            tip: 'multi_data',
+            tip: 'Multi Data',
           },
           {
             shape: 'report',
             icon: `.${fa5Icons}#report`,
-            tip: 'report',
+            tip: 'Report',
           },
           {
             shape: 'deployment_component',
             icon: `.${fa5Icons}#deployment_component`,
-            tip: 'deployment_component',
+            tip: 'Deployment Component',
           },
           
           
@@ -216,6 +222,9 @@
     methods: {
       mouseEnter() {
         this.$emit('mouseEnter');
+      },
+      scrollToTop() {
+                window.scrollTo(0,0);
       },
       clicked(action) {
         this.showShapeMenu = false;
@@ -427,4 +436,5 @@
   .graph-unorderedList {
     background: white;
   }
+   .top_button{border: none;background-color: transparent;margin-top: 4px}
 </style>

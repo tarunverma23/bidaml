@@ -32,6 +32,7 @@
                    :xlink:href="item.icon"></use>
             </svg>
           <span class="screen-reader-text">{{ item.shape }}</span>
+          <span class="tooltiptext">{{item.tip}}</span>
           </span>
         </li>
       </ul>
@@ -55,6 +56,11 @@
             <span class="screen-reader-text">{{ item.action }}</span>
           <span class="tooltiptext">{{item.tip}}</span>
         </span>
+      </li>
+      <li>
+        <button v-on:click="scrollToTop" class="top_button" title="Scroll to the top">
+        <i class="fas fa-arrow-alt-circle-up"></i>
+        </button>
       </li>
     </ul>
   </div>
@@ -119,7 +125,7 @@
             action: 'SAVE',
             icon: ['floppy-o'],
             toggled: false,
-            tip: 'Save (Ctrl+S)',
+            tip: 'Save on your computer(Ctrl+S)',
           },
         ],
         selectTools: [
@@ -176,7 +182,7 @@
           {
             shape: 'circle',
             icon: `.${fa5Icons}#circle-ellipse`,
-            tip: 'Circle',
+            tip: 'Task',
           },
           // {
           //   shape: 'file',
@@ -196,22 +202,22 @@
           {
             shape: 'green_circle',
             icon: `.${fa5Icons}#green_circle`,
-            tip: 'green_circle',
+            tip: 'Start',
           },
           {
             shape: 'diamond',
             icon: `.${fa5Icons}#diamond`,
-            tip: 'diamond',
+            tip: 'Condition',
           },
           {
             shape: 'red_circle',
             icon: `.${fa5Icons}#red_circle`,
-            tip: 'red_circle',
+            tip: 'End',
           },
           {
             shape: 'alert',
             icon: `.${fa5Icons}#alert`,
-            tip: 'alert',
+            tip: 'Alert',
           },
 
         ],
@@ -225,6 +231,9 @@
     methods: {
       mouseEnter() {
         this.$emit('mouseEnter');
+      },
+      scrollToTop() {
+                window.scrollTo(0,0);
       },
       clicked(action) {
         this.showShapeMenu = false;
@@ -436,4 +445,5 @@
   .graph-unorderedList {
     background: white;
   }
+   .top_button{border: none;background-color: transparent;margin-top: 4px}
 </style>
