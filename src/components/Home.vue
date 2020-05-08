@@ -116,11 +116,11 @@
 
      <!-- </div> right part ends here -->
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-50 homepage1"> 
-        <img src="https://bidaml.s3-ap-southeast-2.amazonaws.com/home1.png">
+        <img src="../assets/home1.png">
     </div>
 
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-50 homepage1 margin-bottom-20"> 
-        <img src="https://bidaml.s3-ap-southeast-2.amazonaws.com/home2.jpg" width="85%">
+        <img src="../assets/home2.jpg" width="85%">
     </div>
      
      
