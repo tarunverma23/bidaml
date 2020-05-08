@@ -139,7 +139,6 @@ export default {
             }
             else {
               this.flag = false;
-
             }
             
             
@@ -173,9 +172,10 @@ export default {
 
     display1(){
        if (this.flag){
+                clearInterval(this.refreshIntervalId);
                 toast_it("done")
                 $('#process_resultModal').modal('show');
-                clearInterval(this.refreshIntervalId);
+                
         }
         // else {
         //   toast_it("no records found");

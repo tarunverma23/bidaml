@@ -29,11 +29,11 @@
             <router-link to="/Register"><span class="loin_text_color font-size-12">Go to User Registration</span></router-link>
           </div>
         </fieldset>
-         <!-- <div style="text-align:left;font-size:12px">
+         <div style="text-align:left;font-size:12px">
               <span>For Guest Account use:</span><br>
-              <span>Account Id: guest</span> <br>
-              <span>Password: 00000</span>
-          </div> -->
+              <span>Account Id: guest@bidaml.com</span> <br>
+              <span>Password: 123456789</span>
+          </div>
       </form>
     </section>
   </div>
