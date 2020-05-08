@@ -114,7 +114,7 @@ export default {
             task_list= p.tasks;
             // console.log(p.tasks);
              length= tasks.length;
-             //console.log(length);
+            //  console.log(length);
             pr = p.problem;
             //console.log(pr); 
             })

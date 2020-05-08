@@ -83,7 +83,7 @@ export default {
             firebase.database().ref(user_id).push({problem:database_problem,tasks:database_tasks})
             .then((data) => 
             { console.log(data);
-            toast_it_close("Saved")})
+            toast_it("Saved")})
             .catch((error) => { console.log(error);})
 
 
