@@ -185,9 +185,9 @@
      
 
 
-    <div class="woo-toast"></div>
+    <!-- <div class="woo-toast"></div> -->
        
-    </div>
+  </div>
     
 </template>
 

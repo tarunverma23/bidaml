@@ -92,6 +92,7 @@ export default {
         // [START authwithemail]
         var email = this.email;
         var password = this.password;
+        // toast_it("Logging in");
         
         // firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
         //    alert("Login Successful");
@@ -100,8 +101,10 @@ export default {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then((data) => { 
+          this.$router.push('apphome');
+          toast_it("Logged in");
           //firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-        console.log(data);alert("Login Successful");
+        // toast_it("Logging in");
         console.log(data.user.email);
         // firebase.database().ref('user_id').push(database_tasks)
         //     .then((data) => { console.log(data);})
@@ -114,18 +117,22 @@ export default {
           var errorMessage = error.message;
           // [START_EXCLUDE]
           if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
+            // alert('Wrong password.');
+            toast_it(errorMessage);
           } else {
-            alert(errorMessage);
+            //alert(errorMessage);
+            toast_it(errorMessage);
           }
           console.log(error);
+         
           document.getElementById('quickstart-sign-in').disabled = false;
         });
         // [END authwithemail]
 
         firebase.auth().onAuthStateChanged(user => {
           if(user) {
-            this.$router.push('apphome');
+            // this.$router.push('apphome');
+            
           }
         });
         

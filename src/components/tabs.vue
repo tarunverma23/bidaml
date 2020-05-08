@@ -7,10 +7,10 @@
       <router-link v-for="routes in links" v-bind:key="routes.id" 
       :to="`${routes.page}`" target="_blank" class="navbar_links a-deco"> {{routes.text}} </router-link>
       <!-- <router-link to="/Login"> -->
-      <button type='submit' v-on:click="onlogout" class='btn pull-right'>
-        <router-link to="/Login" class="color-white">
+      <button type='submit' v-on:click="onlogout" class='btn pull-right color-white'>
+        <!-- <router-link to="/Login" class="color-white"> -->
         Logout 
-        </router-link>
+        <!-- </router-link> -->
       </button>
       
     </nav>
@@ -18,6 +18,9 @@
 </template>
 <script>
 import firebase from 'firebase';
+
+
+
 export default {
   name: 'Navigation',
   data() {
@@ -76,17 +79,21 @@ export default {
       //     console.error('Sign Out Error', error);
       //   });
 
-      firebase.auth().signOut().then(function() {
+      firebase.auth().signOut().then((data) => { 
           // alert("Logout Successful");
           console.log('Signed Out');
+          toast_it("Logged out");
+          this.$router.push('Login');
+           
       });
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
         } else {
         // No user is signed in.
-         alert("Logout Successful");
+        //  alert("Logout Successful");
         //  this.$router.push('Login');
+        // this.$router.push('login');
         }
       });
     }

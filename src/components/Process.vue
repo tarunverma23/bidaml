@@ -12,8 +12,8 @@
                 </p>
         </div>
 
-        <button v-if="condition1" class="btn brand-btn1" style="width:200px" @click="showModal">Fetch tasks</button>
-        <button v-if="condition2" class="btn brand-btn1" style="width:200px" @click="showModal">Display tasks</button>
+        <button class="btn brand-btn1" style="width:200px" @click="displaymodal">Fetch tasks</button>
+        <!-- <button v-if="condition2" class="btn brand-btn1" style="width:200px" @click="showModal">Display tasks</button> -->
                     <!-- ------------------ process result modal -------------------------------- -->
     <div id="result-modal">
       <div class=" modal fade" 
@@ -80,7 +80,10 @@ export default {
       fetch_count: '0',
       condition1:true,
       condition2:false,
+      flag: false,
+      refreshIntervalId: '',
     }
+
 
   },
  
@@ -88,10 +91,11 @@ export default {
     showModal(){
           // var fetch_count = 0;
           // console.log("initiated")
+          
           var database = firebase.database();
           var user = firebase.auth().currentUser;
           var user_id = user.uid;
-          var pr = '';
+           var pr = '';
           var length = '';
           var task_list = [];
           var flag = '';
@@ -101,9 +105,6 @@ export default {
             starCountRef.on('value', function(snapshot) {
             //console.log(snapshot.val());
             var x = snapshot.val();
-            // if (x != ' '){
-            //   flag = 1;
-            // }
             //console.log(Object.entries(x));
             const [keyOne, _] = Object.entries(x);
             var p = keyOne[keyOne.length - 1];
@@ -116,7 +117,7 @@ export default {
              //console.log(length);
             pr = p.problem;
             //console.log(pr); 
-            });
+            })
 
             this.display_hexagon = pr;
             //console.log(task_list);
@@ -128,26 +129,58 @@ export default {
               }
                //console.log(fetch_count);
             }
-            // this.condition1 = false;
-            // this.condition2 = true;
+             
 
             if(pr){
-              $('#process_resultModal').modal('show');
+              // $('#process_resultModal').modal('show');
+              this.flag = true;
+              // $('#process_resultModal').modal('show');
+              // clearInterval(this.refreshIntervalId);
             }
+            else {
+              this.flag = false;
+
+            }
+            
             
     },
 
      displaymodal(){
+      //  this.showModal();
+       toast_it_constant("fetching data");
+        this.refreshIntervalId = setInterval(() => {
+              this.showModal();
+              this.display1();
+             }, 7000);
         // this.showModal().then(() => {
         //  $('#process_resultModal').modal('show');
         // });
-        this.condition1 = false;
-        this.condition2 = true;
-         this.showModal()
+        //  this.showModal().then( (data) => { toast_it_close("Fetch complete")} )
             
-            setTimeout(() => {
-              $('#process_resultModal').modal('show');
-             }, 2000);
+            // setTimeout(() => {
+            //   $('#process_resultModal').modal('show');
+            //   toast_it_close("Data Fetched");
+            //  }, 10000);
+
+           
+            //  if (this.flag==1){
+            //    toast_it_close("done")
+            //    $('#process_resultModal').modal('show');
+               
+            //  }
+        // setInterval(function(){ alert("Hello"); }, 3000);
+    },
+
+    display1(){
+       if (this.flag){
+                toast_it("done")
+                $('#process_resultModal').modal('show');
+                clearInterval(this.refreshIntervalId);
+        }
+        // else {
+        //   toast_it("no records found");
+        //   clearInterval(this.refreshIntervalId);
+        // }
     },
 
     generate_task_icon(x){

@@ -70,6 +70,7 @@ export default {
             $('#brainstorming_resultModal').modal('show');
         },
         savedatabase (save_hexagon,save_tasks){
+            toast_it("saving");
             var database = firebase.database();
             //var FirebaseAuth = firebase.auth();
             //console.log(this.save_tasks);
@@ -80,7 +81,9 @@ export default {
             //console.log(user_id);
              
             firebase.database().ref(user_id).push({problem:database_problem,tasks:database_tasks})
-            .then((data) => { console.log(data);})
+            .then((data) => 
+            { console.log(data);
+            toast_it_close("Saved")})
             .catch((error) => { console.log(error);})
 
 
