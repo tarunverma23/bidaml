@@ -47,6 +47,12 @@
              :shape="defaultShape"
              :mouse="mouseState"/>
 
+    <toolBardeployment v-show="this.$route.path =='/Deployment'" @clickedAction="changeMouseState($event)"
+             @changeDefaultShape="changeDefaultShape($event)"
+             @mouseEnter="closeHoverMenu()"
+             :shape="defaultShape"
+             :mouse="mouseState"/>
+
     <color-picker v-show="ifColorPickerOpen"
                   :style="styleObject"
                   :value="colors"
@@ -95,6 +101,7 @@
   import toolBarprocess from './components/toolBarprocess';
   import toolBartechnique from './components/toolBartechnique';
   import toolBardata from './components/toolBardata';
+  import toolBardeployment from './components/toolBardeployment';
   import brainstorming_form from './components/brainstorming_form';
 
   
@@ -223,6 +230,7 @@
       toolBarprocess,
       toolBartechnique,
       toolBardata,
+      toolBardeployment,
       'color-picker': Compact,
       hoverMenuNode,
       hoverMenuEdge
@@ -1469,6 +1477,8 @@
               case 'report': { return '#157EFB'}
               case 'code_file': { return 'black'}
               case 'information': { return '#a8a8a8'}
+              case 'data': { return '#aaffaa'}
+              case 'multi_data': { return '#aaffaa'}
               default : { return '#fcfcfc'}
             }
           },
@@ -1539,6 +1549,20 @@
               }
               case 'information': {  // information
               return 'M89.64 43.98h170.1v87.075H89.64z';
+              
+              }
+
+              case 'deployment_component': {  // deployment_component
+              return 'M89.64 43.98h170.1v87.075H89.64z';
+              
+              }
+              case 'data': {  // data
+              return 'm55.345 32.256-27.944 0c-2.944 0-5.331 2.391-5.331 5.344l0 61.187c0 2.951 2.372 5.344 5.317 5.344l39.944 0c2.937 0 5.317-2.391 5.317-5.3l0-46.609 0-1.331-15.972-18.634-1.331 0 0 0 0 0zm-1.331 2.662-26.632 0c-1.464 0-2.65 1.212-2.65 2.65l0 61.25c0 1.464 1.21 2.65 2.662 2.65l39.93 0c1.47 0 2.662-1.184 2.662-2.644l0-45.272-10.654 0c-2.937 0-5.318-2.36-5.318-5.34l0-13.294 0 0zm2.662 1.331 0 11.956c0 1.483 1.2 2.685 2.653 2.685l9.858 0-12.511-14.641 0 0z';
+              
+              }
+
+              case 'multi_data': {  // multi_data
+              return 'm31.213 54.565 0-.004c-2.756 0-4.989 2.244-4.989 5.014l0 57.415c0 2.769 2.225 5.014 4.989 5.014l37.481 0c2.749 0 4.98-2.234 4.996-4.996 2.749 0 4.98-2.234 4.996-4.996 2.756 0 4.989-2.244 4.989-4.973l0-43.736 0-1.249-14.987-17.485-27.47 0c-2.757 0-4.993 2.234-5.009 4.996-2.749 0-4.98 2.234-4.989 4.996 0 0 0 0 0 0 0 0 0 0 0 0l-.006.004 0 0zm.006 2.494c-1.379 0-2.498 1.137-2.498 2.487l0 57.474c0 1.373 1.136 2.487 2.498 2.487l37.469 0c1.379 0 2.498-1.137 2.498-2.487l-34.977-.011c-2.764 0-4.989-2.245-4.989-5.014l0-54.936c0 0 0 0 0 0l0 0 0 0zm4.996-4.996c-1.379 0-2.498 1.137-2.498 2.487l0 57.474c0 1.373 1.136 2.487 2.498 2.487l37.469 0c1.379 0 2.498-1.137 2.498-2.487l0-.011-34.977 0c-2.764 0-4.989-2.245-4.989-5.014l0-54.936 0 0 0 0zm29.975-4.996-24.99 0c-1.373 0-2.487 1.137-2.487 2.487l0 57.474c0 1.373 1.136 2.487 2.498 2.487l37.469 0c1.379 0 2.498-1.111 2.498-2.481l0-42.481-9.997 0c-2.756 0-4.991-2.215-4.991-5.011l0-12.475 0 0zm2.498 1.249 0 11.219c0 1.392 1.126 2.52 2.49 2.52l9.25 0-11.74-13.738 0 0z';
               
               }
               default : {

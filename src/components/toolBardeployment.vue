@@ -66,7 +66,7 @@
 
   export default {
     props: ['mouse', 'shape'],
-    name: 'toolBardata',
+    name: 'toolBardeployment',
     data() {
       return {
         tools: [
@@ -199,9 +199,9 @@
             tip: 'report',
           },
           {
-            shape: 'information',
-            icon: `.${fa5Icons}#information`,
-            tip: 'information',
+            shape: 'deployment_component',
+            icon: `.${fa5Icons}#deployment_component`,
+            tip: 'deployment_component',
           },
           
           
