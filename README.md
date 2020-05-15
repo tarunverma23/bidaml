@@ -1,4 +1,4 @@
-# graphviz
+# BiDaML
 
 ### Try it [here](https://andrewjakubowicz.github.io/vue-graphViz/)
 #### https://andrewjakubowicz.github.io/vue-graphViz
