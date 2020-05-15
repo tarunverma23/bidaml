@@ -5,10 +5,6 @@
 
 BiDaML is a set of domain-specific visual languages to design, model, and specify data analytics solutions. It uses five diagram types at different levels of abstraction to support key aspects of big data analytics. These five diagram types cover the whole data analytics software development life cycle from higher-level requirement analysis and problem definition through the low-level deployment of the final product.
 
-## networkVizJs
-This component is built using the networkVizJS API
-See: [Project Link](https://github.com/AndrewJakubowicz/networkVizJS)
-
 Node Version: v8.17.0
 Vue JS: 2.9.6
 ## Build Setup
