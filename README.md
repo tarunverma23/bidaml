@@ -1,27 +1,13 @@
-# graphviz
+# BiDaML
 
-### Try it [here](https://andrewjakubowicz.github.io/vue-graphViz/)
-#### https://andrewjakubowicz.github.io/vue-graphViz
+### Try it [here](https://bidaml.web.app/)
+#### https://bidaml.web.app/
 
-Use the toolbar on the right to draw out your graph.
-You can double click to create nodes easily.
-Multiple objects can be selected and manipulated at once through the selection tool (second from top in toolbar)
-Typical keyboard shortcuts are supported
+BiDaML is a set of domain-specific visual languages to design, model, and specify data analytics solutions. It uses five diagram types at different levels of abstraction to support key aspects of big data analytics. These five diagram types cover the whole data analytics software development life cycle from higher-level requirement analysis and problem definition through the low-level deployment of the final product.
 
-## networkVizJs
-This component is built using the networkVizJS API
-See: [Project Link](https://github.com/AndrewJakubowicz/networkVizJS)
+Node Version: v8.17.0
 
-## Very quick rough prototype of structure mapper.
-
-I haven't isolated the component, and have instead left it in an example.
-
-The component has dependencies which are in the static folder (images).
-
-Otherwise the component reacts to the nodes passed in.
-If the user clicks save, an event is emitted with the structure saved as a string.
-The SVG node is also passed in that event.
-
+Vue JS: 2.9.6
 
 ## Build Setup
 
@@ -47,5 +33,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
