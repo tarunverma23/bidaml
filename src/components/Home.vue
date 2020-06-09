@@ -32,7 +32,7 @@
   
   <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-top-10 ">
     <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 no-lr-pad"></div>
-    <div class="col-md-7 col-lg-7 col-sm-7 col-xs-7 no-lr-pad content_div">
+    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 no-lr-pad content_div">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-10">
             <!-- <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div> -->
             <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 no-lr-pad text-right">
@@ -57,7 +57,7 @@
                 <span><i class="fa fa-check check"></i></span>
             </div>
             <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9 no-lr-pad text-left">
-                <span class="feature">Apply data analytics to <b>improve decision-making</b></span>
+                <span class="feature">Help applying data analytics to <b>improve decision-making</b></span>
             </div>
         </div>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-10">
@@ -66,7 +66,7 @@
                 <span><i class="fa fa-check check"></i></span>
             </div>
             <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9 no-lr-pad text-left">
-                <span class="feature">Discover unknown patterns and insights using <b>visualization techniques and data mining</b></span>
+                <span class="feature">Help discovering unknown patterns and insights using <b>visualization techniques and data mining</b></span>
             </div>
         </div>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 margin-10">

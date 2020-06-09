@@ -43,6 +43,7 @@
 <script>
 import firebase from 'firebase';
 export default {
+  name: 'login_form',
     data(){
         return {
             note: '',
@@ -52,6 +53,7 @@ export default {
    
         }
     },
+
 
     watch: {
     note () {

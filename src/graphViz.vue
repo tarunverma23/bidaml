@@ -61,7 +61,6 @@
                   ref="vueColorPicker">
     </color-picker>
     <div id="graph" v-on:dblclick="dblClickOnPage">
-      <!-- <button v-on:click="scrollToTop"></button> -->
       
     </div>
     
