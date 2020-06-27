@@ -247,8 +247,8 @@
       }
 
       else{
-        this.recommender[0].modalresponse = 'No Reccommendations found, please answer the questions again!'
-        this.recommender[1].modalresponse = 'You can collect data from here(https://datasetsearch.research.google.com/)'
+        // this.recommender[0].modalresponse = 'No Reccommendations found, please answer the questions again!'
+        this.recommender[0].modalresponse = 'You can collect data from here(https://datasetsearch.research.google.com/)'
       }
 
     
