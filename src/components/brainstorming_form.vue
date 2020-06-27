@@ -8,7 +8,7 @@
           <i class="fa fa-cog" aria-hidden="true"></i><p>Start Drawing on the Canvas</p>
           <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad margin-top-10">
              <button class="btn brand-btn1" v-on:click="open_help" style="width:200px; ">Read Help</button>
-        </div>
+          </div>
           
           <div class="modal" tabindex="-1" role="dialog" id="help_modal">
             <div class="modal-dialog" role="document">

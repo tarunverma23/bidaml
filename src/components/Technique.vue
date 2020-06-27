@@ -8,7 +8,10 @@
               </div>
         </div>
        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center no-lr-pad">
-                <p class="text-justify margin-top-0"><b>Technique diagrams</b> show the step by step procedures and processes for each sub-task in the brainstorming and process diagrams at a low level of abstraction. They show what techniques have been used or are planned to be used and whether they were successful or there were any issues.
+                <p class="text-justify margin-top-0"><b>Technique diagrams</b> show the step by step 
+                procedures and processes for each sub-task in the brainstorming and process diagrams 
+                at a low level of abstraction. They show what techniques have been used or are planned 
+                to be used and whether they were successful or there were any issues.
                 </p>
        </div>
   </div>

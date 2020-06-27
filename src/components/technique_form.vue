@@ -47,6 +47,9 @@
             <!-- <button class="btn brand-btn1" v-on:click="generate">
               View recommendations
             </button> -->
+            <button class="btn brand-btn1" v-if="questionIndex > 0" v-on:click="prev">
+                prev
+              </button>
             <button class="btn brand-btn1" style="width:200px" @click="showModal">View recommendations</button>
             <result-modal ref="modal"></result-modal>
             <!-- <h3>The Result</h3>
@@ -95,7 +98,7 @@
     title: 'heading',
     questions: [{
       id: 1,
-      text: 'Business Requirement Analysis for technique diagram',
+      text: 'Recommending Techniques and related Python Code',
       responses: [{
         text: 'Do you have data?',
         options:["Yes","No"],
@@ -105,7 +108,7 @@
     },
       {
         id: 2,
-        text: 'Business Requirement Analysis for technique diagram',
+        text: 'Recommending Techniques and related Python Code',
         responses: [{
           text: 'how many samples you have/expected to have?',
           options:["Not Known","Less than 50","50 or above and less than 10K",
@@ -116,7 +119,7 @@
       },
       {
         id: 3,
-        text: 'Business Requirement Analysis for technique diagram',
+        text: 'Recommending Techniques and related Python Code',
         responses: [{
           text: 'do you know where you can collect/purchase data?',
           options:["Yes","No"],
@@ -126,7 +129,7 @@
       },
       {
         id: 4,
-        text: 'Business Requirement Analysis for technique diagram',
+        text: 'Recommending Techniques and related Python Code',
         responses: [{
           text: 'Are you aiming to predict a category/quantity/structure?',
           options:["Prediction is not required","Not known","Predict a category","Predict a quantity",
@@ -137,7 +140,7 @@
       },
       {
         id: 5,
-        text: 'Business Requirement Analysis for technique diagram',
+        text: 'Recommending Techniques and related Python Code',
         responses: [{
           text: 'do you know the number of categories?',
           options:["Yes","No"],
@@ -147,7 +150,7 @@
       },
       {
         id: 6,
-        text: 'Business Requirement Analysis for technique diagram',
+        text: 'Recommending Techniques and related Python Code',
         responses: [{
           text: 'Do you have labelled data?',
           options:["Yes","No"],
@@ -201,56 +204,57 @@
       showModal() {
       
       if (this.userResponses[3]== 'Predict a category' && this.userResponses[5]== 'Yes' ){
-        if (this.userResponses[1]=='10K or above and less than 100K'){
-          this.recommender[0].modalresponse = 'Linear SVC is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/svm.html#classification '
-          this.recommender[1].modalresponse = 'If its not working, if your data is text, refer to https://scikit-learn.org/stable/modules/naive_bayes.html'
-          this.recommender[2].modalresponse = 'Otherwise refer to https://scikit-learn.org/stable/modules/neighbors.html'
-          this.recommender[3].modalresponse = 'If not working refer to one of the following links'
-          this.recommender[4].modalresponse = 'https://scikit-learn.org/stable/modules/svm.html#classification'
-          this.recommender[5].modalresponse = 'https://scikit-learn.org/stable/modules/ensemble.html'
-        }
-        else {
-          this.recommender[0].modalresponse = 'Stochastic Gradient Descent is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/sgd.html#classification'
-          this.recommender[1].modalresponse = 'If its not working, refer to https://scikit-learn.org/stable/modules/kernel_approximation.html'
-        }
+        // if (this.userResponses[1]=='10K or above and less than 100K' || this.userResponses[1]=='100K or above')
+        // {
+          this.recommender[0].modalresponse = 'If you have less than 100K samples, Linear SVC (https://scikit-learn.org/stable/modules/svm.html#classification) is a suitable technique for your problem.'
+          this.recommender[1].modalresponse = 'If its not working, if your data is text, you can use Naive Bayes (https://scikit-learn.org/stable/modules/naive_bayes.html)'
+          this.recommender[2].modalresponse = 'Otherwise you can use Nearest Neighbors (https://scikit-learn.org/stable/modules/neighbors.html).'
+          this.recommender[3].modalresponse = 'If not working, use SVC method (https://scikit-learn.org/stable/modules/svm.html#classification) or E”ensemble Classifier (https://scikit-learn.org/stable/modules/ensemble.html)'
+          this.recommender[4].modalresponse = 'If you have more than 100k samples, you can use Stochastic Gradient Descent (scikit-learn.org/stable/modules/sgd.html#classification")'
+          this.recommender[5].modalresponse = 'If its not working, try kernel approximations (scikit-learn.org/stable/modules/kernel_approximation.html")'
+        //}
+       
+ 
+      }
+      else if (this.userResponses[3]== 'Predict a category' && this.userResponses[5]== 'No'){
+        //if (this.userResponses[1]=='10K or above and less than 100K' || this.userResponses[1]=='100K or above'){
+          this.recommender[0].modalresponse = 'It seems you have a clustering problem.'
+          this.recommender[1].modalresponse = 'If you know the number of categories and you have less than 10K samples, K-means (https://scikit-learn.org/stable/modules/clustering.html#k-means) is a suitable technique for your problem.'
+          this.recommender[2].modalresponse = 'If its not working, refer to Spectral clustering (https://scikit-learn.org/stable/modules/clustering.html#spectral-clustering) or Gaussian mixture models (https://scikit-learn.org/stable/modules/mixture.html)"'
+          this.recommender[3].modalresponse = 'If you have 10K or more samples, try Mini Batch K-Means (https://scikit-learn.org/stable/modules/clustering.html#mini-batch-k-means)'
+          this.recommender[4].modalresponse = 'Finally, if you don’t know the number of categories, and you have less than 10K samples, try Mean Shift(https://scikit-learn.org/stable/modules/clustering.html#mean-shift) or Variational Bayesian Gaussian Mixture(https://scikit-learn.org/stable/modules/mixture.html#bgmm)"'
+        //}
+      }
+
+      else if (this.userResponses[3]== 'Predict a quantity'){
+          this.recommender[0].modalresponse = 'It seems you have a regression problem.'
+          this.recommender[1].modalresponse = 'If you have more than 100K samples, Stochastic Gradient Descent (https://scikit-learn.org/stable/modules/sgd.html#regression") is a suitable technique for your problem.'
+          this.recommender[2].modalresponse = 'If you have less than 100K samples and there are a few important features, you can try Lasso (https://scikit-learn.org/stable/modules/linear_model.html#lasso), or ElasticNet (https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)")'
+          this.recommender[3].modalresponse = 'If not, you can try ridge regression (https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression), or SVR with linear kernel (https://scikit-learn.org/stable/modules/svm.html#regression)'
+          this.recommender[4].modalresponse = 'If these dont work, you can try SVR with nonlinear kernel (https://scikit-learn.org/stable/modules/svm.html#regression), or ensemble regressors (https://scikit-learn.org/stable/modules/ensemble.html)'
+      }
+      else if (this.userResponses[3]== 'Predict a structure' || this.userResponses[3]== 'Not Known'
+      || this.userResponses[3]== 'Prediction is not required'){
+          this.recommender[0].modalresponse = 'If you are just exploring, you can try dimensionality reduction methods, i.e. Principal component analysis (https://scikit-learn.org/stable/modules/decomposition.html#principal-component-analysis-pca).'
+          this.recommender[1].modalresponse = 'If it’s not working and you have less than 10K samples, try Isomap (https://scikit-learn.org/stable/modules/manifold.html#isomap) or Spectral Embedding (https://scikit-learn.org/stable/modules/manifold.html#spectral-embedding).'
+          this.recommender[2].modalresponse = 'If non of these work, try Locally Linear Embedding (https://scikit-learn.org/stable/modules/manifold.html#locally-linear-embedding).'
+          this.recommender[3].modalresponse = 'If you have 10K samples or more, try Kernel Approximation (https://scikit-learn.org/stable/modules/kernel_approximation.html#kernel-approximation)'  
+      }
+
+      else if (this.userResponses[0]== 'No'){
         
-      }
-      else if (this.userResponses[3]== 'Predict a category'){
-        if (this.userResponses[1]=='10K or above and less than 100K'){
-          this.recommender[0].modalresponse = 'If there are a few important features, you can try Lasso (https://scikit-learn.org/stable/modules/linear_model.html#lasso), or ElasticNet (https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)"'
-          this.recommender[1].modalresponse = 'If not, you can try ridge regression (https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression), or SVR with linear kernel (https://scikit-learn.org/stable/modules/svm.html#regression)"'
-          this.recommender[2].modalresponse = 'If these dont work, you can try SVR with nonlinear kernel (https://scikit-learn.org/stable/modules/svm.html#regression), or ensemble regressors (https://scikit-learn.org/stable/modules/ensemble.html)'
-
-        }
-
-        else {
-          this.recommender[0].modalresponse = 'Stochastic Gradient Descent is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/sgd.html#regression'
-
-        }
-
+        this.recommender[0].modalresponse = 'You can collect data from here (https://datasetsearch.research.google.com/)'
       }
 
-      else if (this.userResponses[3]== 'Predict a category' && this.userResponses[5]== 'No') {
-        if (this.userResponses[4]== 'Yes') {
-          if (this.userResponses[1]=='10K or above and less than 100K') {
-            this.recommender[0].modalresponse = 'K-means is a suitable technique for your problem. You can refer to https://scikit-learn.org/stable/modules/clustering.html#k-means'
-            this.recommender[1].modalresponse = 'If its not working, refer to Spectral clustering (https://scikit-learn.org/stable/modules/clustering.html#spectral-clustering)'
-            this.recommender[2].modalresponse = 'or Gaussian mixture models (https://scikit-learn.org/stable/modules/mixture.html)'
-            this.recommender[3].modalresponse = 'Mean Shift(https://scikit-learn.org/stable/modules/clustering.html#mean-shift)'
-            this.recommender[4].modalresponse = 'Variational Bayesian Gaussian Mixture(https://scikit-learn.org/stable/modules/mixture.html#bgmm)'
+      else{
+        this.recommender[0].modalresponse = 'No Reccommendations found, please answer the questions again!'
+        this.recommender[1].modalresponse = 'You can collect data from here(https://datasetsearch.research.google.com/)'
+      }
 
-          }
-          else {
-            this.recommender[0].modalresponse = 'Mini Batch K-Means(https://scikit-learn.org/stable/modules/clustering.html#mini-batch-k-means)'
-          }
-
-        }
+    
+    $('#resultModal').modal('show');
       
-
-      }
-      $('#resultModal').modal('show');
-      
-      },
+    },
 
       // Go to next question
       next: function () {

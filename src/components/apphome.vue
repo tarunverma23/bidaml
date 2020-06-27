@@ -49,7 +49,7 @@
                                 <a href="/Process" target="_blank">
                                 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
                                 <button type='submit' class='btn btn_pink margin-top-10 pull-left'>
-                                    process Diagram 
+                                    Process Diagram 
                                     </button>
                                 </div> 
                                 </a>
