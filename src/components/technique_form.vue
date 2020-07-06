@@ -100,7 +100,7 @@
       id: 1,
       text: 'Recommending Techniques and related Python Code',
       responses: [{
-        text: 'Do you have data?',
+        text: 'Do you have a dataset?',
         options:["Yes","No"],
         
       },

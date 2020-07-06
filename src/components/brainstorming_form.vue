@@ -116,16 +116,21 @@
       <!-- -- -->
       <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 no-lr-pad left_border text-center">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 color-grey no-lr-pad" style="font-size:20px">
-          <i class="fa fa-cog" aria-hidden="true"></i><p>Find Similar Papers and projects</p>
+          <i class="fa fa-cog" aria-hidden="true"></i><p>Resource Recommendations</p>
         </div>
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad ">
-          <a href="http://bidaml.pythonanywhere.com/" target="_blank">
-             <button class="btn brand-btn1" style="width:200px;">Access the Tool</button>
+          <a href="https://paperswithcode.com/" target="_blank">
+             <button class="btn brand-btn1" style="width:200px;">Similar Papers & Projects</button>
           </a> 
         </div>
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-lr-pad margin-top-5">
+        <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5  margin-10">
           <a href="https://datasetsearch.research.google.com/" target="_blank">
-             <button class="btn brand-btn1" style="width:200px;">Use Google Dataset Search</button>
+             <button class="btn brand-btn1" style="width:auto;">Google Dataset Search</button>
+          </a> 
+        </div>
+        <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5  margin-10">
+          <a href="https://www.kaggle.com/datasets" target="_blank">
+             <button class="btn brand-btn1" style="width:auto;">Kaggle Dataset Search</button>
           </a> 
         </div>
          
