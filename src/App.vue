@@ -294,7 +294,7 @@
 <style scoped>
   .b-arg-map {
     left: 0;
-    top: 330px;
+    top: 45%;
     /* top: 430px; */
     position: absolute;
     width: 100%;

@@ -233,8 +233,11 @@
           this.recommender[3].modalresponse = 'If not, you can try ridge regression (https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression), or SVR with linear kernel (https://scikit-learn.org/stable/modules/svm.html#regression)'
           this.recommender[4].modalresponse = 'If these dont work, you can try SVR with nonlinear kernel (https://scikit-learn.org/stable/modules/svm.html#regression), or ensemble regressors (https://scikit-learn.org/stable/modules/ensemble.html)'
       }
-      else if (this.userResponses[3]== 'Predict a structure' || this.userResponses[3]== 'Not Known'
-      || this.userResponses[3]== 'Prediction is not required'){
+      //original code before making changes
+      // else if (this.userResponses[3]== 'Predict a structure' || this.userResponses[3]== 'Not Known'
+      // || this.userResponses[3]== 'Prediction is not required'){
+
+         else if (this.userResponses[3]== 'Predict a structure' || this.userResponses[3]== 'Not Known'){
           this.recommender[0].modalresponse = 'If you are just exploring, you can try dimensionality reduction methods, i.e. Principal component analysis (https://scikit-learn.org/stable/modules/decomposition.html#principal-component-analysis-pca).'
           this.recommender[1].modalresponse = 'If it’s not working and you have less than 10K samples, try Isomap (https://scikit-learn.org/stable/modules/manifold.html#isomap) or Spectral Embedding (https://scikit-learn.org/stable/modules/manifold.html#spectral-embedding).'
           this.recommender[2].modalresponse = 'If non of these work, try Locally Linear Embedding (https://scikit-learn.org/stable/modules/manifold.html#locally-linear-embedding).'
@@ -247,8 +250,9 @@
       }
 
       else{
-        // this.recommender[0].modalresponse = 'No Reccommendations found, please answer the questions again!'
-        this.recommender[0].modalresponse = 'You can collect data from here(https://datasetsearch.research.google.com/)'
+        //this.recommender[0].modalresponse = 'No Reccommendations found, please answer the questions again!'
+        this.recommender[0].modalresponse = 'No Reccommendations found, please make sure the questions are correctly answered!'
+        this.recommender[1].modalresponse = 'Or, You can collect data from here(https://datasetsearch.research.google.com/)'
       }
 
     
