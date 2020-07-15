@@ -299,8 +299,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border-top: 1px solid #E5E5E5;
-   
+    border-top: 1px solid #E5E5E5; 
   }
 
 
